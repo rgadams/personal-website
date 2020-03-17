@@ -19,7 +19,11 @@
     "@angular/platform-browser": "~8.2.3",
     "@angular/platform-browser-dynamic": "~8.2.3",
     "@angular/router": "~8.2.3",
+    "bootstrap": "^4.4.1",
+    "lodash": "^4.17.15",
+    "ngx-bootstrap": "^5.5.0",
     "rxjs": "~6.4.0",
+    "sylvester": "0.0.21",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
