@@ -2,14 +2,38 @@
   display: flex;
   justify-content: flex-end;
   padding: .25em;
-  background-color: black;
-  color: white;
+  background-color: #59307c;
+  height: 5em;
+  color: #e0e0e0;
+  align-items: center;
+
+  .btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+    background-color: #7c5295;
+  }
 
   .logo {
     margin-right: auto;
+    margin-left: 1em;
   }
 
   .dropdown:not(:last-child) {
     padding-right: 0.25em;
+  }
+
+  .dropdown-menu.show {
+    background-color: #7c5295;
+    .dropdown-item {
+      color: #e0e0e0;
+    }
+    .dropdown-item:hover {
+      background-color: #59307c;
+    }
+  }
+
+  .dropdown-toggle {
+    color: #e0e0e0;
+    min-height: -webkit-fill-available;
   }
 }

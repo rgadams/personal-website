@@ -53,5 +53,11 @@ export class ParallelWorkers {
       this.run();
     }
   }
+
+  terminate() {
+    this.workers.forEach((worker) => {
+      worker.terminate();
+    });
+  }
 }
 

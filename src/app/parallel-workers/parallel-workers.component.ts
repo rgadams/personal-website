@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, KeyValueDiffer, KeyValueChanges, KeyValueDiffers, OnInit} from '@angular/core';
 import {ParallelWorkers} from 'src/app/classes/parallel/parallel-workers';
 import {Matrix} from '../classes/matrix';
 
@@ -8,16 +8,31 @@ import {Matrix} from '../classes/matrix';
   styleUrls: ['./parallel-workers.component.less']
 })
 export class ParallelWorkersComponent implements OnInit {
-
-  numberOfWorkers = 4;
-  arrayLength = 2000;
+  doneLoading = false;
+  numberOfWorkers = 1;
+  arrayLength = 5000;
   parallelWorkers: ParallelWorkers;
   array = [];
   expectedArray = [];
+  runHistory = [];
+  workersDiffer: KeyValueDiffer<string, any>;
 
-  constructor() { }
+  constructor(private differs: KeyValueDiffers) { }
 
   ngOnInit() {
+    this.setup();
+    this.workersDiffer = this.differs.find(this.parallelWorkers).create();
+    this.doneLoading = true;
+    this.parallelWorkers.run();
+  }
+
+  runCountInParallel() {
+    this.reset();
+    this.setup();
+    this.parallelWorkers.run();
+  }
+
+  setup() {
     for (let i = 0; i < this.arrayLength; i++) {
       const leftMatrix = Matrix.createBlankSquareMatrixFromDimensions(10, false);
       const rightMatrix = Matrix.createBlankSquareMatrixFromDimensions(10, false);
@@ -38,18 +53,27 @@ export class ParallelWorkersComponent implements OnInit {
     this.parallelWorkers = new ParallelWorkers(this.array, this.numberOfWorkers);
   }
 
-  runCountInParallel() {
-    this.parallelWorkers.run();
+  reset() {
+    this.array = [];
+    this.parallelWorkers.terminate();
   }
 
-  logMatrices(index: number) {
-    let expMatix = this.expectedArray[index];
-    console.log('Expected Matrix: ', expMatix);
-    let actualMatrix = this.array[index];
-    console.log('Actual Matrix: ', actualMatrix);
+  parallelWorkersChanged(changes: KeyValueChanges<string, any>) {
+    changes.forEachAddedItem((changedItem) => {
+      if (changedItem.key == 't1') {
+        this.runHistory.push({
+          workers: this.numberOfWorkers,
+          size: this.arrayLength,
+          time: this.parallelWorkers.t1 - this.parallelWorkers.t0
+        });
+      }
+    })
   }
 
-  compareObjects(expected, actual) {
-    return JSON.stringify(expected) === JSON.stringify((actual));
+  ngDoCheck(): void {
+    const changes = this.workersDiffer.diff(this.parallelWorkers);
+    if (changes) {
+      this.parallelWorkersChanged(changes);
+    }
   }
 }

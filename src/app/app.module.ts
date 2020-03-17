@@ -11,6 +11,7 @@ import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { CanvasThreeDimensionsComponent } from './canvas-three-dimensions/canvas-three-dimensions.component';
 import { ParallelWorkersComponent } from './parallel-workers/parallel-workers.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ParallelWorkersComponent } from './parallel-workers/parallel-workers.co
     BrowserAnimationsModule,
     AppRoutingModule,
     AlertModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

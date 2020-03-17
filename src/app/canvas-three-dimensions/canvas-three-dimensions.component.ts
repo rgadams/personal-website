@@ -17,10 +17,8 @@ export class CanvasThreeDimensionsComponent implements OnInit {
   canvasSize;
   currentObject: Object3D;
   camera: Camera;
-  focalPlane;
   cameraOn = false;
   light = new Vector(1, 3, -5);
-  lightIntensity = 0.1;
 
   constructor(private http: HttpClient) { }
 
@@ -31,24 +29,11 @@ export class CanvasThreeDimensionsComponent implements OnInit {
     this.ctx.canvas.width  = this.canvasSize;
     this.ctx.canvas.height = this.canvasSize;
     this.camera = new Camera(new Vector(0, 1, -5), new Vector(0, 0, 0));
-    this.focalPlane = this.getFocalPlane();
     this.readObjectFile('assets/test-objects/teapot.obj');
     const i = setInterval(() => {
       this.ctx.clearRect(0, 0, this.c.width, this.c.height);
       this.render();
-    }, 10);
-  }
-
-  getFocalPlane() {
-    const planeNormalVector = this.camera.getOrientation();
-    return {
-      x_coefficient: planeNormalVector.vector[0],
-      y_coefficient: planeNormalVector.vector[1],
-      z_coefficient: planeNormalVector.vector[2],
-      constant: planeNormalVector.vector[0] * (this.camera.position.vector[0] + planeNormalVector.vector[0]) +
-        planeNormalVector.vector[1] * (this.camera.position.vector[1] + planeNormalVector.vector[1]) +
-        planeNormalVector.vector[2] * (this.camera.position.vector[2] + planeNormalVector.vector[2]),
-    }
+    }, 5);
   }
 
   readObjectFile(filepath: string) {
@@ -79,20 +64,6 @@ export class CanvasThreeDimensionsComponent implements OnInit {
       y: 0.01,
       z: 0
     };
-    // const vertexShading = [];
-    // this.currentObject.vertices.forEach((vertex, index) => {
-    //   this.currentObject.faces.forEach((face) => {
-    //     if(face.indexOf(index)) {
-    //       this.getFaceShading({
-    //         vertex1: this.currentObject.vertices[face[0]-1],
-    //         vertex2: this.currentObject.vertices[face[1]-1],
-    //         vertex3: this.currentObject.vertices[face[1]-1],
-    //         shading: 0
-    //       });
-    //
-    //     }
-    //   });
-    // });
     this.currentObject.rotateObject(sceneRotation);
     let displayObject = this.currentObject.getDisplayOrientation();
     displayObject.faces.sort((f1, f2) => {

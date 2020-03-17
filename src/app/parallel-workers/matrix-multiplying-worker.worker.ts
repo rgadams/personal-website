@@ -5,6 +5,5 @@ addEventListener('message', ({ data }) => {
   const leftMatrix = data.data.leftMatrix;
   const rightMatrix = data.data.rightMatrix;
   const result = Matrix.multiply(leftMatrix, rightMatrix);
-  debugger;
   postMessage({ result: result, dataIndex: data.dataIndex });
 });
