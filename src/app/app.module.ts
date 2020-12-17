@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 
-import { AlertModule } from 'ngx-bootstrap';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CanvasThreeDimensionsComponent } from './canvas-three-dimensions/canvas-three-dimensions.component';
 import { ParallelWorkersComponent } from './parallel-workers/parallel-workers.component';
 import { FormsModule } from '@angular/forms';

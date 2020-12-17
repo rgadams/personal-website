@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ParallelWorkersComponent } from './parallel-workers.component';
 
@@ -6,7 +6,7 @@ describe('ParallelWorkersComponent', () => {
   let component: ParallelWorkersComponent;
   let fixture: ComponentFixture<ParallelWorkersComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ParallelWorkersComponent ]
     })
