@@ -1,0 +1,15 @@
+{
+  "name": "wasm-prime-number-generator",
+  "collaborators": [
+    "rgadams <roy.g.adams@gmail.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "wasm_prime_number_generator_bg.wasm",
+    "wasm_prime_number_generator.js",
+    "wasm_prime_number_generator.d.ts"
+  ],
+  "module": "wasm_prime_number_generator.js",
+  "types": "wasm_prime_number_generator.d.ts",
+  "sideEffects": false
+}

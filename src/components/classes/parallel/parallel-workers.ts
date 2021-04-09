@@ -15,7 +15,7 @@ export class ParallelWorkers {
 
   private setupWorkers() {
     for (let i = 0; i < this.numberOfWorkers; i++) {
-      this.workers.push(new Worker('src/app/parallel-workers/matrix-multiplying-worker.worker', {
+      this.workers.push(new Worker('src/components/parallel-workers/matrix-multiplying-worker.worker', {
         type: 'module'
       }));
       this.workers[i].onmessage = ({ data }) => {

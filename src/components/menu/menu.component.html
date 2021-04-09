@@ -1,0 +1,12 @@
+<header class="menu">
+  <div [routerLink]="''" class="logo"> | Roy Adams</div>
+<!--  <button type="button" class="btn btn-primary" routerLink="about">About Me</button>-->
+  <div ngbDropdown class="dropdown">
+    <button class="btn dropdown-toggle" type="button" id="projectsMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Projects
+    </button>
+    <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="projectsMenuButton">
+      <a *ngFor="let item of menuItems" class="dropdown-item" [routerLink]="item.link">{{item.name}}</a>
+    </div>
+  </div>
+</header>

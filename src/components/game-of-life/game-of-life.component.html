@@ -1,0 +1,41 @@
+<div class="description">
+    <h3>Conway's Game of Life using Rust/WebAssembly</h3>
+    <p>
+        The engine for setting up the universe for this implementation of Conway's Game of Life is written in
+        Rust and compiled to WebAssembly. Thanks to <a href="https://rustwasm.github.io/book/game-of-life/implementing.html">this book</a> for
+        the Rust/WASM tutorial. The JS/HTML for this project is nearly all my own.
+    </p>
+    <h4>Instructions</h4>
+    <p>
+        See <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a>
+        for more information on the rules of the game.
+    </p>
+    <ul>
+        <li>Click the Randomize button to randomize the state of each cell in the universe</li>
+        <li>Click the Clear button to reset the universe to every cell being dead</li>
+        <li>Click on an individual cell to toggle its state</li>
+    </ul>
+    <label for="patterns">Generate a pattern:</label>
+    <select [(ngModel)]="patternToGenerate" name="Patterns" id="patterns">
+        <option value="gosper-glider-gun">Gosper's Glider Gun</option>
+        <option value="hammerhead">Hammerhead Spaceship</option>
+    </select>
+    <button type="button" (click)="generatePattern()">Generate</button>
+</div>
+<div class="game-of-life">
+    <div class="game-of-life-grid">
+        <div *ngFor="let gridElement of gridElements"
+             [id]="gridElement.id"
+             (click)="toggleCell(gridElement.row, gridElement.column)"
+             class="{{gridElement.className}}">
+        </div>
+    </div>
+    <div class="button-row">
+        <button type="button" class="btn btn-info" (click)="togglePlay()">Play/Pause</button>
+        <button type="button" class="btn btn-warning" (click)="randomizeCells()">Randomize</button>
+        <button type="button" class="btn btn-danger" (click)="clearGrid()">Clear</button>
+        <div>{{ statusDisplay }}</div>
+    </div>
+</div>
+
+

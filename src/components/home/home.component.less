@@ -1,0 +1,61 @@
+.home {
+    height: 100%;
+}
+
+.home-panels {
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+    grid-template-rows: 50% 50%;
+    height: 100%;
+
+    .panel-parent {
+        box-shadow: 5px 3px 3px #1c1c1c;
+        border-radius: 20px;
+        overflow: hidden;
+        margin: 1em;
+    }
+
+    .panel-child {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: transform 250ms linear;
+
+        .label {
+            display: none;
+        }
+    }
+
+    .panel-child:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+
+        .label {
+            text-align: center;
+            font-size: 2em;
+            color: white;
+            display: block;
+            background-color: rgba(0,0,0,0.75);
+        }
+    }
+
+    .dota2-panel {
+        grid-column: 1 / span 3;
+        grid-row: 1;
+        background: red;
+    }
+
+    .about-panel {
+        background: green;
+    }
+
+    .wasm-game-of-life-panel .panel-child {
+        background-image: url('src/assets/images/game-of-life.png');
+        color: black;
+    }
+
+    .wasm-primes-panel {
+        background: yellow;
+    }
+}

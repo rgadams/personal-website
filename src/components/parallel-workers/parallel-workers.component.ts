@@ -1,6 +1,6 @@
-import {Component, KeyValueDiffer, KeyValueChanges, KeyValueDiffers, OnInit} from '@angular/core';
-import {ParallelWorkers} from 'src/app/classes/parallel/parallel-workers';
-import {Matrix} from '../classes/matrix';
+import { Component, KeyValueDiffer, KeyValueChanges, KeyValueDiffers, OnInit } from '@angular/core';
+import { ParallelWorkers } from 'src/components/classes/parallel/parallel-workers';
+import { Matrix } from '../classes/matrix';
 
 @Component({
   selector: 'app-parallel-workers',

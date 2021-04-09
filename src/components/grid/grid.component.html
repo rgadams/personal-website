@@ -1,0 +1,23 @@
+<div class="grid-content">
+  <nav class="grid-nav">
+    <button (click)="goToDashboard()" class="btn btn-primary">Dashboard</button>
+    <button (click)="goToChristmas()" class="btn btn-primary">Christmas Lights</button>
+  </nav>
+
+  <div *ngIf="currentState === 'dashboard'" class="grid-container dashboard">
+    <div class="section-one">Section One</div>
+    <div class="section-two">Section Two</div>
+    <div class="section-three">Section Three</div>
+    <div class="section-four">Section Four</div>
+    <div class="section-five">Section Five</div>
+    <div class="section-six">Section Six</div>
+    <div class="section-seven">Section Seven</div>
+    <div class="section-eight">Section Eight</div>
+  </div>
+
+  <div *ngIf="currentState === 'christmas'" class="grid-container christmas">
+    <div *ngFor="let item of christmasList" class="item" [ngClass]="item.style"></div>
+  </div>
+</div>
+
+

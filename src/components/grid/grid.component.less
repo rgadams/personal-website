@@ -1,0 +1,98 @@
+.grid-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .grid-container {
+    height: 100%;
+  }
+}
+
+.grid-nav {
+  margin-top: 0.25em;
+
+  button {
+    margin-left: 0.25em;
+  }
+}
+
+.christmas {
+  display: grid;
+  grid-template-columns: repeat(20, 5%);
+  grid-template-rows: repeat(20, 5%);
+
+  div {
+    border: 2px;
+    padding: 0.1em;
+    margin: 0.1em;
+  }
+
+  .dotted {
+    border-style: dotted;
+    border-color: green;
+    background: red;
+  }
+
+  .solid {
+    border-style: solid;
+    border-color: red;
+    background: green;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+}
+
+.dashboard {
+  display: grid;
+
+  .section-one {
+    grid-row: 1;
+    grid-column: 2 / span 3;
+    background: green;
+  }
+
+  .section-four {
+    grid-row: 2 / span 2;
+    grid-column: 2;
+    background: blue;
+  }
+
+  .section-three {
+    grid-row: 2 / span 2;
+    grid-column: 3;
+    background: red;
+    z-index: 1;
+  }
+
+  .section-five {
+    grid-row: 2;
+    grid-column: 3 / span 2;
+    background: #491217;
+  }
+
+  .section-seven {
+    grid-column: 1;
+    grid-row: 1;
+    background: yellow;
+  }
+
+  .section-six {
+    background: aqua;
+  }
+
+  .section-two {
+    background: orange;
+  }
+
+  .section-eight {
+    background: purple;
+  }
+
+  div {
+    border: 2px solid black;
+    padding: 0.5em;
+    margin: 0.5em;
+  }
+}

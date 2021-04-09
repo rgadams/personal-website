@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Object3D } from 'src/app/classes/object3-d';
-import { Face } from 'src/app/classes/interfaces';
+import { Object3D } from 'src/components/classes/object3-d';
+import { Face } from 'src/components/classes/interfaces';
 import { Camera } from '../classes/camera';
 import { Matrix } from '../classes/matrix';
 import { Vector } from '../classes/vector';
