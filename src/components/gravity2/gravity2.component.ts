@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Universe } from 'gravity-wasm';
-import { memory } from 'gravity-wasm/gravity_wasm_bg.wasm';
+import { Component, OnInit } from '@angular/core';
+import { Universe } from 'src/assets/wasm-gravity';
+import { memory } from 'src/assets/wasm-gravity/gravity_wasm_bg.wasm';
 import { WebGlService } from 'src/services/web-gl.service';
 import fragmentShaderSrc from 'src/assets/shaders/fragment-shader.glsl';
 import vertexShaderSrc from 'src/assets/shaders/vertex-shader.glsl';
-import { interval } from 'rxjs';
 import { mat4 } from 'gl-matrix';
 
 @Component({
