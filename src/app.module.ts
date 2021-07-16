@@ -18,8 +18,10 @@ import { CommonModule } from '@angular/common';
 import { GridComponent } from 'src/components/grid/grid.component';
 import { GameOfLifeComponent } from 'src/components/game-of-life/game-of-life.component';
 import { AboutComponent } from 'src/components/about/about.component';
-import { PrimesComponent } from './components/primes/primes.component';
-import { HomeComponent } from './components/home/home.component';
+import { PrimesComponent } from 'src/components/primes/primes.component';
+import { HomeComponent } from 'src/components/home/home.component';
+import { GravityComponent } from 'src/components/gravity/gravity.component';
+import { Gravity2Component } from 'src/components/gravity2/gravity2.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { HomeComponent } from './components/home/home.component';
     GameOfLifeComponent,
     AboutComponent,
     PrimesComponent,
-    HomeComponent
+    HomeComponent,
+    GravityComponent,
+    Gravity2Component
   ],
   imports: [
     CommonModule,

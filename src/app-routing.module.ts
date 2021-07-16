@@ -7,6 +7,8 @@ import { GameOfLifeComponent } from 'src/components/game-of-life/game-of-life.co
 import { AboutComponent } from 'src/components/about/about.component';
 import { PrimesComponent } from 'src/components/primes/primes.component';
 import { HomeComponent } from 'src/components/home/home.component';
+import { GravityComponent } from 'src/components/gravity/gravity.component';
+import { Gravity2Component } from 'src/components/gravity2/gravity2.component';
 
 const routes: Routes = [
   { path: 'canvas', component: CanvasThreeDimensionsComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'life', component: GameOfLifeComponent },
   { path: 'primes', component: PrimesComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'gravity', component: GravityComponent },
+  { path: 'gravity2', component: Gravity2Component },
   { path: '', component: HomeComponent }
 ];
 

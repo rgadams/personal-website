@@ -7,6 +7,7 @@
   "files": [
     "wasm_prime_number_generator_bg.wasm",
     "wasm_prime_number_generator.js",
+    "wasm_prime_number_generator_bg.js",
     "wasm_prime_number_generator.d.ts"
   ],
   "module": "wasm_prime_number_generator.js",
