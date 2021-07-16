@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Universe } from 'gravity-wasm';
-import { memory } from 'gravity-wasm/gravity_wasm_bg.wasm';
+import { Universe } from 'src/assets/wasm-gravity';
+import { memory } from 'src/assets/wasm-gravity/gravity_wasm_bg.wasm';
 
 @Component({
     selector: 'app-gravity',
