@@ -15,7 +15,7 @@ export class ParallelWorkers {
 
   private setupWorkers() {
     for (let i = 0; i < this.numberOfWorkers; i++) {
-      this.workers.push(new Worker('src/components/parallel-workers/matrix-multiplying-worker.worker', {
+      this.workers.push(new Worker(new URL('src/components/parallel-workers/matrix-multiplying-worker.worker', import.meta.url), {
         type: 'module'
       }));
       this.workers[i].onmessage = ({ data }) => {
@@ -23,11 +23,11 @@ export class ParallelWorkers {
         this.workersBusy[i] = false;
         this.data[data.dataIndex] = data.result;
         if (this.count < this.data.length) {
-          this.run()
+          this.run();
         }
         if (data.dataIndex === this.data.length - 1) {
           this.t1 = performance.now();
-          console.log('Parallel operation took ' + (this.t1 - this.t0) + " milliseconds.");
+          console.log('Parallel operation took ' + (this.t1 - this.t0) + ' milliseconds.');
         }
       };
       this.workersBusy.push(false);
@@ -43,13 +43,13 @@ export class ParallelWorkers {
       this.t0 = performance.now();
     }
     let index = this.workersBusy.findIndex((value) => value === false);
-    if (index != -1) {
+    if (index !== -1) {
       this.workersBusy[index] = true;
       this.runWorker(index, { data: this.data[this.count], dataIndex: this.count});
       this.count++;
     }
     index = this.workersBusy.findIndex((value) => value === false);
-    if (index != -1 && this.count < this.data.length) {
+    if (index !== -1 && this.count < this.data.length) {
       this.run();
     }
   }

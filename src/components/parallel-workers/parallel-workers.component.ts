@@ -1,4 +1,4 @@
-import { Component, KeyValueDiffer, KeyValueChanges, KeyValueDiffers, OnInit } from '@angular/core';
+import { Component, KeyValueDiffer, KeyValueChanges, KeyValueDiffers, OnInit, DoCheck } from '@angular/core';
 import { ParallelWorkers } from 'src/components/classes/parallel/parallel-workers';
 import { Matrix } from '../classes/matrix';
 
@@ -7,7 +7,7 @@ import { Matrix } from '../classes/matrix';
   templateUrl: './parallel-workers.component.html',
   styleUrls: ['./parallel-workers.component.less']
 })
-export class ParallelWorkersComponent implements OnInit {
+export class ParallelWorkersComponent implements OnInit, DoCheck {
   doneLoading = false;
   numberOfWorkers = 1;
   arrayLength = 5000;
@@ -60,14 +60,14 @@ export class ParallelWorkersComponent implements OnInit {
 
   parallelWorkersChanged(changes: KeyValueChanges<string, any>) {
     changes.forEachAddedItem((changedItem) => {
-      if (changedItem.key == 't1') {
+      if (changedItem.key === 't1') {
         this.runHistory.push({
           workers: this.numberOfWorkers,
           size: this.arrayLength,
           time: this.parallelWorkers.t1 - this.parallelWorkers.t0
         });
       }
-    })
+    });
   }
 
   ngDoCheck(): void {
