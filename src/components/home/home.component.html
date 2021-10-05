@@ -1,16 +1,15 @@
 <div class="home">
-    <div class="home-panels">
-        <div [routerLink]="" class="dota2-panel panel-parent">
-            <div class="panel-child"><div class="label">DOTA2 Twitch Extension</div></div>
+    <section class="profile">
+        <div class="header">
+            <h1>Hello, I am <span class="accent-purple">Roy Adams</span></h1>
+            <h2>Software Engineer</h2>
+            <h4>with interest in front-end development</h4>
         </div>
-        <div [routerLink]="'about'" class="about-panel panel-parent">
-            <div class="panel-child"><div class="label">About Me</div></div>
+    </section>
+    <section class="panels">
+        <h3>Projects</h3>
+        <div class="project-panels">
+            <app-project-panel *ngFor="let project of projectList" [project]="project" class="home-panel"></app-project-panel>
         </div>
-        <div [routerLink]="'life'" class="wasm-game-of-life-panel panel-parent">
-            <div class="panel-child"><div class="label">Conway's Game of Life in WebAssembly</div></div>
-        </div>
-        <div [routerLink]="'primes'" class="wasm-primes-panel panel-parent">
-            <div class="panel-child"><div class="label">WebAssembly Performance</div></div>
-        </div>
-    </div>
+    </section>
 </div>

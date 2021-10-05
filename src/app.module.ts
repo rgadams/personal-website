@@ -1,14 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from 'src/app-routing.module';
 import { AppComponent } from 'src/components/app/app.component';
 import { MenuComponent } from 'src/components/menu/menu.component';
-
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CanvasThreeDimensionsComponent } from './components/canvas-three-dimensions/canvas-three-dimensions.component';
@@ -16,40 +14,34 @@ import { ParallelWorkersComponent } from './components/parallel-workers/parallel
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { GridComponent } from 'src/components/grid/grid.component';
-import { GameOfLifeComponent } from 'src/components/game-of-life/game-of-life.component';
 import { AboutComponent } from 'src/components/about/about.component';
-import { PrimesComponent } from 'src/components/primes/primes.component';
-import { HomeComponent } from 'src/components/home/home.component';
-import { GravityComponent } from 'src/components/gravity/gravity.component';
-import { Gravity2Component } from 'src/components/gravity2/gravity2.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { MenuModule } from './components/menu/menu.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    CanvasThreeDimensionsComponent,
-    ParallelWorkersComponent,
-    GridComponent,
-    GameOfLifeComponent,
-    AboutComponent,
-    PrimesComponent,
-    HomeComponent,
-    GravityComponent,
-    Gravity2Component
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    AlertModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    FormsModule,
-    DragDropModule,
-    NgbModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        AboutComponent,
+        CanvasThreeDimensionsComponent,
+        ExperienceComponent,
+        GridComponent,
+        ParallelWorkersComponent
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        AlertModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        FormsModule,
+        DragDropModule,
+        NgbModule,
+        MenuModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

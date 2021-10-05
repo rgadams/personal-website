@@ -119,7 +119,7 @@ export class Gravity2Component implements OnInit {
             this.particleColors.push([Math.random() * 0.5 + 0.25, Math.random() * 0.5 + 0.25, Math.random() * 0.5 + 0.25, 1.0]);
         }
 
-        this.canvas = document.getElementById('gravity-canvas') as HTMLCanvasElement;
+        this.canvas = document.getElementById('gravity-canvas-two') as HTMLCanvasElement;
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
 

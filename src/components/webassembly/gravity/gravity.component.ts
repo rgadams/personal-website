@@ -14,12 +14,11 @@ export class GravityComponent implements OnInit {
     numberOfElements = 1000;
     ctx;
 
-    constructor() {
-    }
+    constructor() {}
 
     ngOnInit(): void {
         this.universe = Universe.new();
-        this.canvas = document.getElementById('gravity-canvas') as HTMLCanvasElement;
+        this.canvas = document.getElementById('gravity-canvas-one') as HTMLCanvasElement;
         this.ctx = this.canvas.getContext('2d');
         this.ctx.canvas.width = window.innerWidth;
         this.ctx.canvas.height = window.innerHeight;

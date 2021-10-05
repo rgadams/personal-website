@@ -1,39 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-menu',
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.less']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
     menuItems = [
-        {
-            link: '/canvas',
-            name: '3D Graphics'
-        },
-        {
-            link: '/parallel',
-            name: 'Web Workers'
-        },
-        {
-            link: '/grid',
-            name: 'CSS Grid'
-        },
-        {
-            link: '/life',
-            name: 'Game of Life'
-        },
-        {
-            link: '/primes',
-            name: 'WebAssembly Primes'
-        },
+        { link: '/canvas', name: '3D Graphics' },
+        { link: '/parallel', name: 'Web Workers' },
+        { link: '/webassembly', name: 'WebAssembly' }
     ];
 
     constructor() {
-    }
-
-    ngOnInit() {
-
     }
 
 }

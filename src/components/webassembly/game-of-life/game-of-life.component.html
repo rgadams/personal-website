@@ -20,7 +20,7 @@
         <option value="gosper-glider-gun">Gosper's Glider Gun</option>
         <option value="hammerhead">Hammerhead Spaceship</option>
     </select>
-    <button type="button" (click)="generatePattern()">Generate</button>
+    <button type="button" class="btn btn-primary" (click)="generatePattern()">Generate</button>
 </div>
 <div class="game-of-life">
     <div class="game-of-life-grid">
@@ -31,8 +31,8 @@
         </div>
     </div>
     <div class="button-row">
-        <button type="button" class="btn btn-info" (click)="togglePlay()">Play/Pause</button>
-        <button type="button" class="btn btn-warning" (click)="randomizeCells()">Randomize</button>
+        <button type="button" class="btn btn-primary" (click)="togglePlay()">Play/Pause</button>
+        <button type="button" class="btn btn-random" (click)="randomizeCells()">Randomize</button>
         <button type="button" class="btn btn-danger" (click)="clearGrid()">Clear</button>
         <div>{{ statusDisplay }}</div>
     </div>

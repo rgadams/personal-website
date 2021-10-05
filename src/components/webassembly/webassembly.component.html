@@ -1,0 +1,10 @@
+<ul ngbNav [activeId]="currentPath" class="nav-tabs" destroyOnHide="true" (navChange)="resetFocus()">
+    <li [ngbNavItem]="link.link" *ngFor="let link of links">
+        <a ngbNavLink [routerLink]="link.link">{{ link.title }}</a>
+    </li>
+</ul>
+
+<!--TODO: Figure out better performance when switching between WASM stuff-->
+
+<router-outlet></router-outlet>
+

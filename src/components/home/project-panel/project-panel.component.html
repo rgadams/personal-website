@@ -1,0 +1,8 @@
+<div class="panel">
+    <h1 class="project-title">{{project.title}}</h1>
+    <a *ngIf="project.link" class="project-link" [href]="project.link">{{project.linkText}}</a>
+    <section class="description">
+        <p>{{project.description}}</p>
+    </section>
+    <a *ngIf="project.route" class="project-route" [routerLink]="project.route">Go To Project</a>
+</div>

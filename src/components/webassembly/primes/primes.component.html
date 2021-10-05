@@ -1,0 +1,21 @@
+<div class="primes">
+    <label for="calculate-primes-input">Number of Primes: </label><input [(ngModel)]="numberOfPrimes" id="calculate-primes-input"/>
+    <button type="button" class="btn btn-primary" (click)="runSimulation()">Run</button>
+
+    <table class="simulation-table" aria-describedby="prime simulations">
+        <thead>
+            <tr>
+                <th scope="col">Number of Primes</th>
+                <th scope="col">Time (ms) using WebAssembly</th>
+                <th scope="col">Time (ms) using JavaScript</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let simulation of simulations">
+                <td>{{simulation.numberOfPrimes}}</td>
+                <td>{{simulation.wasmTime}}</td>
+                <td>{{simulation.jsTime}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

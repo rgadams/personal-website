@@ -1,0 +1,47 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
+@Component({
+    selector: 'app-webassembly',
+    templateUrl: './webassembly.component.html',
+    styleUrls: ['./webassembly.component.less']
+})
+export class WebassemblyComponent implements OnInit, OnDestroy {
+
+    currentPath;
+    routerSubscription: Subscription;
+    links = [
+        { title: 'Gravity 1', link: 'gravity/one' },
+        { title: 'Gravity 2', link: 'gravity/two' },
+        { title: 'Game of Life', link: 'life' },
+        { title: 'Primes', link: 'primes' }
+    ];
+
+    constructor(private router: Router) {}
+
+    ngOnInit() {
+        this.checkForSpecificRoute();
+        this.currentPath = this.router.url.replace('/webassembly/', '');
+        this.routerSubscription = this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                this.checkForSpecificRoute();
+                this.currentPath = event.url.replace('/webassembly/', '');
+            }
+        });
+    }
+
+    private checkForSpecificRoute() {
+        if (this.router.url === '/webassembly') {
+            this.router.navigate([`${this.router.url}/${this.links[0].link}`]);
+        }
+    }
+
+    ngOnDestroy() {
+        this.routerSubscription.unsubscribe();
+    }
+
+    resetFocus() {
+        window.focus();
+    }
+}
