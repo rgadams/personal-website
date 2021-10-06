@@ -168,6 +168,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+font-awesome
+(OFL-1.1 AND MIT)
+
 gl-matrix
 MIT
 Copyright (c) 2015-2020, Brandon Jones, Colin MacKenzie IV.
