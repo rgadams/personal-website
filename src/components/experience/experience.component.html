@@ -1,1 +1,8 @@
-<p>Experience Works!</p>
+<div class="experiences">
+    <h1>Experience</h1>
+    <ul>
+        <li *ngFor="let experience of experiences | reverse">
+            <app-experience-item [experience]="experience"></app-experience-item>
+        </li>
+    </ul>
+</div>

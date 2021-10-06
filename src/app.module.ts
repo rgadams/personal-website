@@ -15,15 +15,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { GridComponent } from 'src/components/grid/grid.component';
 import { AboutComponent } from 'src/components/about/about.component';
-import { ExperienceComponent } from './components/experience/experience.component';
 import { MenuModule } from './components/menu/menu.module';
+import { ReversePipe } from './pipes/reverse.pipe';
 
 @NgModule({
     declarations: [
         AppComponent,
         AboutComponent,
         CanvasThreeDimensionsComponent,
-        ExperienceComponent,
         GridComponent,
         ParallelWorkersComponent
     ],
@@ -40,7 +39,9 @@ import { MenuModule } from './components/menu/menu.module';
         NgbModule,
         MenuModule
     ],
-    providers: [],
+    providers: [
+        ReversePipe
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

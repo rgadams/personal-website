@@ -39,6 +39,10 @@ export class PrimesComponent implements OnInit {
         });
     }
 
+    clearRuns() {
+        this.simulations = [];
+    }
+
     sieve_of_eratosthenes(max) {
         const sieve = [];
         const primes = [];

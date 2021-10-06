@@ -1,0 +1,45 @@
+.experience {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-white);
+    border: 4px var(--accent-purple);
+    border-style: solid none;
+
+    .title {
+        font-size: 2em;
+    }
+
+    .employer-line {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+
+        .employer {
+            font-size: 1.5em;
+            color: var(--accent-purple);
+        }
+
+        p {
+            align-self: baseline;
+            margin-bottom: unset;
+        }
+
+        :not(:last-child) {
+            margin-right: 0.5rem;
+        }
+    }
+
+    .location-line {
+        display: flex;
+        flex-direction: row;
+
+        .location {
+            font-style: italic;
+        }
+
+        :not(:last-child) {
+            margin-right: 0.5rem;
+        }
+    }
+}

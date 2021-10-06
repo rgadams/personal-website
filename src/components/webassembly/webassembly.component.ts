@@ -12,10 +12,10 @@ export class WebassemblyComponent implements OnInit, OnDestroy {
     currentPath;
     routerSubscription: Subscription;
     links = [
+        { title: 'Game of Life', link: 'life' },
+        { title: 'Primes', link: 'primes' },
         { title: 'Gravity 1', link: 'gravity/one' },
         { title: 'Gravity 2', link: 'gravity/two' },
-        { title: 'Game of Life', link: 'life' },
-        { title: 'Primes', link: 'primes' }
     ];
 
     constructor(private router: Router) {}

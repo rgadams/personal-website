@@ -1,28 +1,33 @@
-<h2>
-    NOTE: something weird is happening with this page, you may need to refresh the page before it works properly.
-</h2>
+<p class="warning-message">
+    <em class="fa fa-exclamation-triangle"></em> Something odd is happening with this page, you may need to refresh the
+    page before it works properly.
+</p>
 <div class="row">
     <div *ngIf="doneLoading" class="parallel-run-column col-xl">
         <div class="form-group">
             <label for="numberOfWorkers">Number of Threads </label>
-            <input class="form-control" id="numberOfWorkers" type="number" [(ngModel)]="numberOfWorkers">
+            <input class="form-control app-input" id="numberOfWorkers" type="number" [(ngModel)]="numberOfWorkers">
             <label for="sizeOfProblem">Size of Array </label>
-            <input class="form-control" id="sizeOfProblem" type="number" [(ngModel)]="arrayLength">
+            <input class="form-control app-input" id="sizeOfProblem" type="number" [(ngModel)]="arrayLength">
         </div>
 
         <button class="run-parallel btn btn-primary" (click)="runCountInParallel()">Run Parallel Count</button>
 
-        <table class="parallel-history table">
-            <tr class="thead-dark">
+        <table id="parallel-history" class="app-table table" aria-describedby="Run Results">
+            <thead>
+            <tr class="parallel-header">
                 <th scope="col">Threads</th>
                 <th scope="col">Size of Array</th>
                 <th scope="col">Computation Time (ms)</th>
             </tr>
+            </thead>
+            <tbody>
             <tr *ngFor="let row of runHistory">
-                <td scope="row">{{row.workers}}</td>
+                <td>{{row.workers}}</td>
                 <td>{{row.size}}</td>
                 <td>{{row.time | number:'.2'}}</td>
             </tr>
+            </tbody>
         </table>
 
         <button *ngIf="runHistory.length > 0" class="clear-button btn btn-danger" (click)="runHistory = []">Clear Run

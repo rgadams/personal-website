@@ -1,0 +1,14 @@
+<div class="experience">
+    <div class="employer-line">
+        <h1 class="title">{{experience.title}}</h1>
+        <p>at</p>
+        <h2 class="employer">{{experience.employer}}</h2>
+    </div>
+    <span class="location-line">
+        <p class="location">{{experience.location}}</p>
+        <p class="heavy">&middot;</p>
+        <p class="duration">({{experience.startDate}}-{{experience.endDate || 'Now'}})</p>
+    </span>
+    <p class="job-description">{{experience.jobDescription}}</p>
+    <p class="company-description">{{experience.companyDescription}}</p>
+</div>

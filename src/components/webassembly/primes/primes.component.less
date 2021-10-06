@@ -2,23 +2,45 @@
     margin: 2em;
 }
 
+.input-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    label {
+        align-self: flex-end;
+    }
+
+    input {
+        width: fit-content;
+    }
+
+    button:not(:last-child) {
+        margin-right: 0.25em;
+    }
+}
+
 #calculate-primes-input {
     margin: 0 0.5em;
 }
 
 .simulation-table {
     margin-top: 1em;
-}
+    width: 100%;
 
-table, td {
-    border: 1px solid black;
-}
-
-th {
-    border: 3px solid black;
-    font-family: var(--font-header);
+    td, th {
+        padding: 0.25em 0.5em;
+    }
 }
 
 label {
     font-family: var(--font-header);
+}
+
+.description {
+    margin-top: 1em;
+
+    h1 {
+        font-size: 2em;
+    }
 }
