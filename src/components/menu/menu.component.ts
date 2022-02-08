@@ -11,8 +11,4 @@ export class MenuComponent {
         { link: '/parallel', name: 'Web Workers' },
         { link: '/webassembly', name: 'WebAssembly' }
     ];
-
-    constructor() {
-    }
-
 }

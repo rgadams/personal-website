@@ -223,12 +223,10 @@ export class Gravity2Component implements OnInit {
         }
         let colors = [];
 
-        for (let j = 0; j < this.faceColors.length; ++j) {
-            const c = this.faceColors[j];
-
+        this.faceColors.forEach(c => {
             // Repeat each color four times for the four vertices of the face
             colors = colors.concat(c, c, c, c);
-        }
+        });
         return colors;
     }
 

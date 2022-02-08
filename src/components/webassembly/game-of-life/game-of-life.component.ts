@@ -76,7 +76,6 @@ export class GameOfLifeComponent implements OnInit {
     }
 
     drawCells() {
-        // this.performanceService.monitorChangeDetection();
         const cellsPtr = this.universe.cells();
         const cells = new Uint8Array(this.memory.buffer, cellsPtr, this.width * this.height);
         for (let row = 0; row < this.height; row++) {

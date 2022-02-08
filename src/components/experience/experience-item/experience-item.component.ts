@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Experience } from '../experience';
+import { Experience } from 'src/components/experience/experience.model';
 
 @Component({
     selector: 'app-experience-item',
@@ -8,8 +8,4 @@ import { Experience } from '../experience';
 })
 export class ExperienceItemComponent {
     @Input() experience: Experience;
-
-    constructor() {
-    }
-
 }

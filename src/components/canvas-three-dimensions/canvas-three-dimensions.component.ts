@@ -12,9 +12,9 @@ import { Vector } from '../classes/vector';
   styleUrls: ['./canvas-three-dimensions.component.less']
 })
 export class CanvasThreeDimensionsComponent implements OnInit {
-  c;
-  ctx;
-  canvasSize;
+  c: HTMLCanvasElement;
+  ctx: CanvasRenderingContext2D;
+  canvasSize: number;
   currentObject: Object3D;
   camera: Camera;
   cameraOn = false;
@@ -39,16 +39,16 @@ export class CanvasThreeDimensionsComponent implements OnInit {
   readObjectFile(filepath: string) {
     this.currentObject = new Object3D([], []);
     this.http.get(filepath, {responseType: 'text'}).subscribe((response) => {
-      const lines = response.split("\n");
+      const lines = response.split('\n');
       lines.forEach((line) => {
-        const lineParts = line.split(" ");
-        switch(lineParts[0]) {
+        const lineParts = line.split(' ');
+        switch (lineParts[0]) {
           case 'v':
             const vertices = new Vector(parseFloat(lineParts[1]), parseFloat(lineParts[2]), parseFloat(lineParts[3]));
             this.currentObject.vertices.push(vertices);
             break;
           case 'f':
-            const faces = [ parseInt(lineParts[1]), parseInt(lineParts[2]), parseInt(lineParts[3]) ];
+            const faces = [ parseInt(lineParts[1], 10), parseInt(lineParts[2], 10), parseInt(lineParts[3], 10) ];
             this.currentObject.faces.push(faces);
             break;
           default:
@@ -59,37 +59,42 @@ export class CanvasThreeDimensionsComponent implements OnInit {
   }
 
   render() {
-    let sceneRotation = {
+    const sceneRotation = {
       x: 0,
       y: 0.01,
       z: 0
     };
     this.currentObject.rotateObject(sceneRotation);
-    let displayObject = this.currentObject.getDisplayOrientation();
+    const displayObject = this.currentObject.getDisplayOrientation();
     displayObject.faces.sort((f1, f2) => {
-      return (displayObject.vertices[f2[0]-1].vector[2] + displayObject.vertices[f2[1]-1].vector[2] + displayObject.vertices[f2[2]-1].vector[2]) - (displayObject.vertices[f1[0]-1].vector[2] + displayObject.vertices[f1[1]-1].vector[2] + displayObject.vertices[f1[2]-1].vector[2]);
+      return (displayObject.vertices[f2[0] - 1].vector[2]
+              + displayObject.vertices[f2[1] - 1].vector[2]
+              + displayObject.vertices[f2[2] - 1].vector[2])
+          - (displayObject.vertices[f1[0] - 1].vector[2]
+              + displayObject.vertices[f1[1] - 1].vector[2]
+              + displayObject.vertices[f1[2] - 1].vector[2]);
     });
     const faces = [] as Face[];
     displayObject.faces.forEach((f) => {
-      let currentFace = {
-        vertex1: displayObject.vertices[f[0]-1],
-        vertex2: displayObject.vertices[f[1]-1],
-        vertex3: displayObject.vertices[f[2]-1],
+      const currentFace = {
+        vertex1: displayObject.vertices[f[0] - 1],
+        vertex2: displayObject.vertices[f[1] - 1],
+        vertex3: displayObject.vertices[f[2] - 1],
         shading: 0
       } as Face;
       const shading = this.getFaceShading(currentFace);
-      if(Vector.dotProduct(this.getFaceNormal(currentFace), this.camera.getOrientation()) < 0.01) {
+      if (Vector.dotProduct(this.getFaceNormal(currentFace), this.camera.getOrientation()) < 0.01) {
         faces.push({
           vertex1: this.translateObjectCoordinatesToScreenCoordinates(displayObject.vertices[f[0] - 1], this.cameraOn),
           vertex2: this.translateObjectCoordinatesToScreenCoordinates(displayObject.vertices[f[1] - 1], this.cameraOn),
           vertex3: this.translateObjectCoordinatesToScreenCoordinates(displayObject.vertices[f[2] - 1], this.cameraOn),
-          shading: shading
+          shading
         } as Face);
       }
     });
     faces.forEach((face) => {
       this.drawTriangle(face);
-    })
+    });
   }
 
   translateObjectCoordinatesToScreenCoordinates(vertex: Vector, camera = false) {
@@ -106,7 +111,10 @@ export class CanvasThreeDimensionsComponent implements OnInit {
       perspectiveProjectionMatrix.matrix[3][3] = 0;
       perspectiveProjectionMatrix.matrix[3][2] = 1 / distance;
       const transformedVertex = Vector.fromArray(perspectiveProjectionMatrix.multiply(vertexMatrix).transpose().matrix[0]);
-      vertexClone = new Vector(transformedVertex.vector[0] / transformedVertex.vector[3], transformedVertex.vector[1] / transformedVertex.vector[3], transformedVertex.vector[2] / transformedVertex.vector[3]);
+      vertexClone = new Vector(
+          transformedVertex.vector[0] / transformedVertex.vector[3],
+          transformedVertex.vector[1] / transformedVertex.vector[3],
+          transformedVertex.vector[2] / transformedVertex.vector[3]);
     }
     const newX = this.canvasSize / 2 * vertexClone.vector[0] / 4 + this.canvasSize / 2;
     const newY = this.canvasSize / 2 * vertexClone.vector[1] / -4 + this.canvasSize / 1.5;
@@ -120,10 +128,10 @@ export class CanvasThreeDimensionsComponent implements OnInit {
     this.ctx.lineTo(face.vertex2.vector[0], face.vertex2.vector[1]);
     this.ctx.lineTo(face.vertex3.vector[0], face.vertex3.vector[1]);
     this.ctx.lineTo(face.vertex1.vector[0], face.vertex1.vector[1]);
-    let number = face.shading * 255;
-    this.ctx.strokeStyle="rgb(" + number + "," + number + "," + number + ")";
+    const shade = face.shading * 255;
+    this.ctx.strokeStyle = 'rgb(' + shade + ',' + shade + ',' + shade + ')';
     this.ctx.stroke();
-    this.ctx.fillStyle="rgb(" + number + "," + number + "," + number + ")";
+    this.ctx.fillStyle = 'rgb(' + shade + ',' + shade + ',' + shade + ')';
     this.ctx.fill();
   }
 
@@ -142,9 +150,6 @@ export class CanvasThreeDimensionsComponent implements OnInit {
     shading += Math.abs(Vector.dotProduct(faceNormal, lightVec2));
     const lightVec3 = Vector.fromTwoPoints(face.vertex3, this.light).toUnitVector();
     shading += Math.abs(Vector.dotProduct(faceNormal, lightVec3));
-    // console.log(face);
-    // console.log(this.light);
-    // console.log(shading);
     return shading / 3;
   }
 }

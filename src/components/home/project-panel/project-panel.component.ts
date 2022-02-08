@@ -9,9 +9,6 @@ import { Project } from 'src/components/home/project';
 export class ProjectPanelComponent implements OnInit {
     @Input() project: Project;
 
-    constructor() {
-    }
-
     ngOnInit(): void {
     }
 

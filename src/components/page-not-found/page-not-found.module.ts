@@ -19,5 +19,4 @@ const routes: Routes = [
         PageNotFoundComponent
     ]
 })
-export class PageNotFoundModule {
-}
+export class PageNotFoundModule {}
