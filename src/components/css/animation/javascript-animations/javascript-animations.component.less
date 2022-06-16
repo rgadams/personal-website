@@ -1,0 +1,36 @@
+.javascript-animation {
+    margin: 2em;
+    height: 100%;
+}
+
+.draggable-area {
+    margin-top: 2em;
+    background: var(--white);
+    border: 5px solid var(--accent-purple-dark);
+    width: 100%;
+    height: 50%;
+    border-radius: 5px;
+}
+
+.draggable-box {
+    color: var(--white);
+    background: var(--accent-purple);
+    width: 10em;
+    height: 10em;
+    border-radius: 5px;
+    border: 2px solid var(--accent-purple-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+@keyframes pulse {
+    from {
+        background: var(--accent-purple);
+    }
+
+    to {
+        background: var(--accent-purple-dark);
+    }
+}

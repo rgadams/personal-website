@@ -1,0 +1,14 @@
+<div *ngIf="error" class="error-message">{{ error }}</div>
+<div class="grid-game">
+    <div *ngFor="let square of grid; let i = index"
+         [id]="i"
+         [ngClass]="{
+             'grid-square': true,
+             'open-square': square === 16,
+             'game-over-1': gameOver && dances[i] === 1,
+             'game-over-2': gameOver && dances[i] === 2
+         }"
+         (click)="makeMove(i)">{{ square }}
+    </div>
+</div>
+<div *ngIf="gameOver" class="game-over-message">Congratulations! You have won!</div>

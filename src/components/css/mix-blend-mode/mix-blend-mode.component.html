@@ -1,0 +1,79 @@
+<div id="mix-blend-mode">
+    <h1>Mix Blend Mode Examples</h1>
+    <div class="color-picker">
+        <h2 class="h5">Pick a background color:</h2>
+        <mat-form-field>
+            <input matInput [ngxMatColorPicker]="picker" [formControl]="colorCtr"
+                   (colorChange)="handleColorChange($event)">
+            <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+            <ngx-mat-color-picker #picker [touchUi]="touchUi" [color]="color"></ngx-mat-color-picker>
+        </mat-form-field>
+    </div>
+
+    <div class="blend-mode-grid">
+        <div>
+            normal
+            <img class="cfc-logo normal" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            multiply
+            <img class="cfc-logo multiply" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            screen
+            <img class="cfc-logo screen" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            overlay
+            <img class="cfc-logo overlay" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            darken
+            <img class="cfc-logo darken" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            lighten
+            <img class="cfc-logo lighten" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            color-dodge
+            <img class="cfc-logo color-dodge" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            color-burn
+            <img class="cfc-logo color-burn" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            hard-light
+            <img class="cfc-logo hard-light" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            soft-light
+            <img class="cfc-logo soft-light" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            difference
+            <img class="cfc-logo difference" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            exclusion
+            <img class="cfc-logo exclusion" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            hue
+            <img class="cfc-logo hue" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            saturation
+            <img class="cfc-logo saturation" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            color
+            <img class="cfc-logo color" src="assets/images/cfc-logo.png" alt="">
+        </div>
+        <div>
+            luminosity
+            <img class="cfc-logo luminosity" src="assets/images/cfc-logo.png" alt="">
+        </div>
+    </div>
+</div>

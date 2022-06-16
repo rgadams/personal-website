@@ -9,6 +9,7 @@ export class MenuComponent {
     menuItems = [
         { link: '/canvas', name: '3D Graphics' },
         { link: '/parallel', name: 'Web Workers' },
-        { link: '/webassembly', name: 'WebAssembly' }
+        { link: '/webassembly', name: 'WebAssembly' },
+        { link: '/animation', name: 'CSS Animations' }
     ];
 }
