@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 
 @Component({
     selector: 'app-javascript-animations',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./javascript-animations.component.less']
 })
 export class JavascriptAnimationsComponent implements OnInit {
-
+    isTitleBig = false;
     boxX = 0;
     boxY = 0;
     mouseDownX: number;
@@ -21,6 +22,8 @@ export class JavascriptAnimationsComponent implements OnInit {
         this.boxElement.addEventListener('mousedown', (event$) => this.mouseDown(event$));
         document.addEventListener('mousemove', (event$) => this.dragBox(event$));
         document.addEventListener('mouseup', (event$) => this.mouseUp(event$));
+        document.getElementById('animation-title').style.fontSize = '2em';
+        document.addEventListener('keydown', (event$) => this.animateTitle(event$));
     }
 
     dragBox(event$: MouseEvent) {
@@ -47,13 +50,41 @@ export class JavascriptAnimationsComponent implements OnInit {
         }
     }
 
-    getDeltaX(event$) {
+    getDeltaX(event$: MouseEvent) {
         const dx = this.boxX + event$.x - this.mouseDownX;
         return Math.max(Math.min(dx, this.containerElement.clientWidth - this.boxElement.clientWidth), 0);
     }
 
-    getDeltaY(event$) {
+    getDeltaY(event$: MouseEvent) {
         const dy = this.boxY + event$.y - this.mouseDownY;
         return Math.max(Math.min(dy, this.containerElement.clientHeight - this.boxElement.clientHeight), 0);
+    }
+
+    animateTitle($event: KeyboardEvent) {
+        if ($event.code === 'Enter') {
+            const title = document.getElementById('animation-title');
+            const fontSizeChange = 1;
+            const fontSizeChangeRate = 50;
+            const currentFontSize = getFontSize(title);
+
+            const animation = setInterval(animationFrame.bind(this), 5, this.isTitleBig);
+
+            function animationFrame(isTitleBig: boolean) {
+                if (getFontSize(title) < currentFontSize + fontSizeChange && !isTitleBig) {
+                    title.style.fontSize = (getFontSize(title) + fontSizeChange / fontSizeChangeRate).toString() + 'em';
+                    console.log('current font size is' + getFontSize(title));
+                } else if (getFontSize(title) > (currentFontSize - fontSizeChange) && isTitleBig) {
+                    title.style.fontSize = (getFontSize(title) - fontSizeChange / fontSizeChangeRate).toString() + 'em';
+                    console.log('current font size is' + getFontSize(title));
+                } else {
+                    clearInterval(animation);
+                    this.isTitleBig = !this.isTitleBig;
+                }
+            }
+
+            function getFontSize(el: HTMLElement): number {
+                return parseFloat(el.style.fontSize.replace('em', ''));
+            }
+        }
     }
 }
