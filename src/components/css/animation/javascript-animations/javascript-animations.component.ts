@@ -19,44 +19,44 @@ export class JavascriptAnimationsComponent implements OnInit {
     ngOnInit(): void {
         this.boxElement = document.getElementById('drag-me');
         this.containerElement = document.getElementById('container');
-        this.boxElement.addEventListener('mousedown', (event$) => this.mouseDown(event$));
-        document.addEventListener('mousemove', (event$) => this.dragBox(event$));
-        document.addEventListener('mouseup', (event$) => this.mouseUp(event$));
+        this.boxElement.addEventListener('mousedown', ($event) => this.mouseDown($event));
+        document.addEventListener('mousemove', ($event) => this.dragBox($event));
+        document.addEventListener('mouseup', ($event) => this.mouseUp($event));
         document.getElementById('animation-title').style.fontSize = '2em';
-        document.addEventListener('keydown', (event$) => this.animateTitle(event$));
+        document.addEventListener('keydown', ($event) => this.animateTitle($event));
     }
 
-    dragBox(event$: MouseEvent) {
+    dragBox($event: MouseEvent) {
         if (this.isMouseDown) {
-            this.boxElement.style.transform = `translate(${this.getDeltaX(event$)}px, ${this.getDeltaY(event$)}px)`;
+            this.boxElement.style.transform = `translate(${this.getDeltaX($event)}px, ${this.getDeltaY($event)}px)`;
         }
     }
 
-    mouseDown(event$: MouseEvent) {
+    mouseDown($event: MouseEvent) {
         this.boxElement.style.animation = 'pulse 0.5s infinite alternate';
         this.boxElement.style.boxShadow = '0 2px 2px var(--accent-purple-dark)';
-        this.mouseDownX = event$.x;
-        this.mouseDownY = event$.y;
+        this.mouseDownX = $event.x;
+        this.mouseDownY = $event.y;
         this.isMouseDown = true;
     }
 
-    mouseUp(event$: MouseEvent) {
+    mouseUp($event: MouseEvent) {
         if (this.isMouseDown) {
             this.boxElement.style.animation = '';
             this.boxElement.style.boxShadow = '';
-            this.boxX = this.getDeltaX(event$);
-            this.boxY = this.getDeltaY(event$);
+            this.boxX = this.getDeltaX($event);
+            this.boxY = this.getDeltaY($event);
             this.isMouseDown = false;
         }
     }
 
-    getDeltaX(event$: MouseEvent) {
-        const dx = this.boxX + event$.x - this.mouseDownX;
+    getDeltaX($event: MouseEvent) {
+        const dx = this.boxX + $event.x - this.mouseDownX;
         return Math.max(Math.min(dx, this.containerElement.clientWidth - this.boxElement.clientWidth), 0);
     }
 
-    getDeltaY(event$: MouseEvent) {
-        const dy = this.boxY + event$.y - this.mouseDownY;
+    getDeltaY($event: MouseEvent) {
+        const dy = this.boxY + $event.y - this.mouseDownY;
         return Math.max(Math.min(dy, this.containerElement.clientHeight - this.boxElement.clientHeight), 0);
     }
 
