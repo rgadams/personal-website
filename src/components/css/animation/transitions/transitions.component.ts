@@ -5,10 +5,9 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './transitions.component.html',
     styleUrls: ['./transitions.component.less']
 })
-export class TransitionsComponent implements OnInit {
-    ngOnInit() {}
+export class TransitionsComponent {
 
-    moveButton() {
+    moveButton(): void {
         const button1 = document.getElementById('button1');
         if (button1.getAttribute('movedRight') === 'true') {
             button1.setAttribute('movedRight', 'false');
@@ -17,7 +16,7 @@ export class TransitionsComponent implements OnInit {
         }
     }
 
-    scaleButton() {
+    scaleButton(): void {
         const button2 = document.getElementById('button2');
         if (button2.getAttribute('scaled') === 'true') {
             button2.setAttribute('scaled', 'false');

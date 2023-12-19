@@ -19,7 +19,7 @@ export class Matrix {
      * @param dim - size of the square matrix
      * @param identity - whether or not to put 1's in the diagonals to make an identity matrix
      */
-    static createBlankSquareMatrixFromDimensions(dim: number, identity = false) {
+    static createBlankSquareMatrixFromDimensions(dim: number, identity = false): Matrix {
         const newMatrix = [];
         for (let i = 0; i < dim; i++) {
             const newColumn = [];
@@ -47,7 +47,7 @@ export class Matrix {
         return new Matrix(newMatrix);
     }
 
-    static multiply(leftMatrix: Matrix, rightMatrix: Matrix) {
+    static multiply(leftMatrix: Matrix, rightMatrix: Matrix): Matrix {
         if (leftMatrix.columns !== rightMatrix.rows) {
             throw new Error('Cannot multiply these two matrices together');
         }

@@ -1,10 +1,10 @@
 export class ParallelWorkers {
-    workers = [];
-    workersBusy = [];
-    numberOfWorkers;
+    workers: Worker[] = [];
+    workersBusy: boolean[] = [];
+    numberOfWorkers: number;
     count = 0;
-    t0;
-    t1;
+    t0 = 0;
+    t1 = 0;
     data: any[];
 
     constructor(data: any[], numberOfWorkers: number) {
@@ -13,7 +13,7 @@ export class ParallelWorkers {
         this.setupWorkers();
     }
 
-    private setupWorkers() {
+    private setupWorkers(): void {
         for (let i = 0; i < this.numberOfWorkers; i++) {
             this.workers.push(new Worker(new URL('src/components/parallel-workers/matrix-multiplying-worker.worker', import .meta.url), {
                 type: 'module'
@@ -33,27 +33,27 @@ export class ParallelWorkers {
         }
     }
 
-    private runWorker(workerNumber: number, data) {
+    private runWorker(workerNumber: number, data: unknown): void {
         this.workers[workerNumber].postMessage(data);
     }
 
-    run() {
+    run(): void {
         if (this.count === 0) {
             this.t0 = performance.now();
         }
-        let index = this.workersBusy.findIndex((value) => value === false);
+        let index = this.workersBusy.findIndex((value) => !value);
         if (index !== -1) {
             this.workersBusy[index] = true;
             this.runWorker(index, { data: this.data[this.count], dataIndex: this.count });
             this.count++;
         }
-        index = this.workersBusy.findIndex((value) => value === false);
+        index = this.workersBusy.findIndex((value) => !value);
         if (index !== -1 && this.count < this.data.length) {
             this.run();
         }
     }
 
-    terminate() {
+    terminate(): void {
         this.workers.forEach((worker) => {
             worker.terminate();
         });

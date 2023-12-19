@@ -6,7 +6,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app-routing.module';
 import { AppComponent } from 'src/components/app/app.component';
-import { MenuComponent } from 'src/components/menu/menu.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CanvasThreeDimensionsComponent } from './components/canvas-three-dimensions/canvas-three-dimensions.component';

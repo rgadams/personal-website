@@ -11,7 +11,7 @@ export class SquareGameComponent implements OnInit {
     error: string;
     gameOver = false;
 
-    ngOnInit() {
+    ngOnInit(): void {
         // Create array of numbers 1-16, then shuffle the order
         for (let i = 1; i < 17; i++) {
             this.grid.push(i);
@@ -38,18 +38,6 @@ export class SquareGameComponent implements OnInit {
         } else if (Math.floor(openIndex / 4) % 2 === 1 && numberOfInversions % 2 !== 0) {
             this.grid[openIndex] = this.grid[11];
             this.grid[11] = 16;
-        }
-    }
-
-    /* Randomize array in-place using Durstenfeld shuffle algorithm
-     * thanks to https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-     */
-    shuffleArray(array): void {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            const temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
         }
     }
 

@@ -19,7 +19,7 @@ export class AnimationComponent implements OnInit, OnDestroy {
 
     constructor(private router: Router) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.checkForSpecificRoute();
         this.currentPath = this.router.url.replace('/animation/', '');
         this.routerSubscription = this.router.events.subscribe((event) => {
@@ -30,17 +30,17 @@ export class AnimationComponent implements OnInit, OnDestroy {
         });
     }
 
-    private checkForSpecificRoute() {
+    private checkForSpecificRoute(): void {
         if (this.router.url === '/animation') {
             this.router.navigate([`${this.router.url}/${this.links[0].link}`]);
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.routerSubscription.unsubscribe();
     }
 
-    resetFocus() {
+    resetFocus(): void {
         window.focus();
     }
 }

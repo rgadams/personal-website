@@ -22,21 +22,21 @@ export class CanvasThreeDimensionsComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.c = document.getElementById('canvas-three-dimensions') as HTMLCanvasElement;
-    this.ctx = this.c.getContext('2d');
+    this.ctx = this.c.getContext('2d') as CanvasRenderingContext2D;
     this.canvasSize = Math.min(window.innerWidth, window.innerHeight);
     this.ctx.canvas.width  = this.canvasSize;
     this.ctx.canvas.height = this.canvasSize;
     this.camera = new Camera(new Vector(0, 1, -5), new Vector(0, 0, 0));
     this.readObjectFile('assets/test-objects/teapot.obj');
-    const i = setInterval(() => {
+    setInterval(() => {
       this.ctx.clearRect(0, 0, this.c.width, this.c.height);
       this.render();
     }, 5);
   }
 
-  readObjectFile(filepath: string) {
+  readObjectFile(filepath: string): void {
     this.currentObject = new Object3D([], []);
     this.http.get(filepath, {responseType: 'text'}).subscribe((response) => {
       const lines = response.split('\n');
@@ -58,7 +58,7 @@ export class CanvasThreeDimensionsComponent implements OnInit {
     });
   }
 
-  render() {
+  render(): void {
     const sceneRotation = {
       x: 0,
       y: 0.01,
@@ -97,7 +97,7 @@ export class CanvasThreeDimensionsComponent implements OnInit {
     });
   }
 
-  translateObjectCoordinatesToScreenCoordinates(vertex: Vector, camera = false) {
+  translateObjectCoordinatesToScreenCoordinates(vertex: Vector, camera = false): Vector {
     let vertexClone = vertex.getClone();
     if (camera) {
       let vertexMatrix = new Matrix([[vertex.vector[0]], [vertex.vector[1]], [vertex.vector[2]], [1]]);
@@ -122,7 +122,7 @@ export class CanvasThreeDimensionsComponent implements OnInit {
     return new Vector(newX, newY, newZ);
   }
 
-  drawTriangle(face: Face) {
+  drawTriangle(face: Face): void {
     this.ctx.beginPath();
     this.ctx.moveTo(face.vertex1.vector[0], face.vertex1.vector[1]);
     this.ctx.lineTo(face.vertex2.vector[0], face.vertex2.vector[1]);
@@ -141,7 +141,7 @@ export class CanvasThreeDimensionsComponent implements OnInit {
     return Vector.crossProduct(vec2, vec1);
   }
 
-  getFaceShading(face: Face) {
+  getFaceShading(face: Face): number {
     let shading = 0;
     const faceNormal = this.getFaceNormal(face).toUnitVector();
     const lightVec1 = Vector.fromTwoPoints(face.vertex1, this.light).toUnitVector();

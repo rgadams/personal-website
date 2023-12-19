@@ -14,7 +14,7 @@ export class Object3D {
         this.rotationMatrix = Object3D.createRotationMatrix(rotation);
     }
 
-    static createRotationMatrix(rotation: Rotation) {
+    static createRotationMatrix(rotation: Rotation): Matrix {
         const rotationMatrixForX = new Matrix(
             [[1, 0, 0],
                 [0, Math.cos(rotation.x), -1 * Math.sin(rotation.x)],
@@ -33,7 +33,7 @@ export class Object3D {
         return rotationMatrixForX.multiply(rotationMatrixForY).multiply(rotationMatrixForZ);
     }
 
-    newObjectWithRotation(rotationMatrix: Matrix) {
+    newObjectWithRotation(rotationMatrix: Matrix): Object3D {
         const newObject = cloneDeep(this) as Object3D;
         newObject.vertices = newObject.vertices.map((vertex) => {
             const rotatedVertex = vertex.toMatrix().multiply(rotationMatrix);
@@ -42,11 +42,11 @@ export class Object3D {
         return newObject;
     }
 
-    rotateObject(rotation: Rotation) {
+    rotateObject(rotation: Rotation): void {
         this.rotationMatrix = this.rotationMatrix.multiply(Object3D.createRotationMatrix(rotation));
     }
 
-    getDisplayOrientation() {
+    getDisplayOrientation(): Object3D {
         return this.newObjectWithRotation(this.rotationMatrix);
     }
 }

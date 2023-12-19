@@ -10,6 +10,7 @@ export class MenuComponent {
         { link: '/canvas', name: '3D Graphics' },
         { link: '/parallel', name: 'Web Workers' },
         { link: '/webassembly', name: 'WebAssembly' },
-        { link: '/animation', name: 'CSS Animations' }
+        { link: '/animation', name: 'CSS Animations' },
+        { link: '/rxjs', name: 'Observables' }
     ];
 }

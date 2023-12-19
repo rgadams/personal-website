@@ -9,7 +9,7 @@ export class Camera {
         this.pointingAt = pointingAt;
     }
 
-    getOrientation() {
+    getOrientation(): Vector {
         const orientationVector = new Vector(this.position.vector[0] - this.pointingAt.vector[0],
             this.position.vector[1] - this.pointingAt.vector[1],
             this.position.vector[2] - this.pointingAt.vector[2]);
@@ -21,7 +21,7 @@ export class Camera {
             orientationVector.vector[2] / vectorLength);
     }
 
-    getPosition() {
+    getPosition(): Vector {
         return this.position;
     }
 }

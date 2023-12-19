@@ -11,7 +11,7 @@ export class GridComponent implements OnInit {
 
     ngOnInit(): void {
         for (let i = 0; i < 400; i++) {
-            let style;
+            let style: string;
             switch (i % 3) {
                 case 0:
                     style = 'dotted';
@@ -36,8 +36,8 @@ export class GridComponent implements OnInit {
         }, 300);
     }
 
-    goToChristmas() {
-        clearInterval();
+    goToChristmas(): void {
+        clearInterval(undefined);
         this.currentState = 'christmas';
         setInterval(() => {
             const pop = this.christmasList.slice(1);
@@ -46,8 +46,8 @@ export class GridComponent implements OnInit {
         }, 700);
     }
 
-    goToDashboard() {
-        clearInterval();
+    goToDashboard(): void {
+        clearInterval(undefined);
         this.currentState = 'dashboard';
     }
 }

@@ -7,7 +7,7 @@ export class Vector {
         this.vector = numbers;
     }
 
-    static fromArray(vector: number[]) {
+    static fromArray(vector: number[]): Vector {
         const newVector = new Vector();
         vector.forEach(item => {
             newVector.vector.push(item);
@@ -15,7 +15,7 @@ export class Vector {
         return newVector;
     }
 
-    static fromTwoPoints(point1: Vector, point2: Vector) {
+    static fromTwoPoints(point1: Vector, point2: Vector): Vector {
         if (point1.getLength() !== point2.getLength()) {
             throw new Error('Can\'t find vector from points of different dimensions');
         }
@@ -26,7 +26,7 @@ export class Vector {
         return newVector;
     }
 
-    static dotProduct(vec1: Vector, vec2: Vector) {
+    static dotProduct(vec1: Vector, vec2: Vector): number {
         if (vec1.getLength() !== vec2.getLength()) {
             throw new Error('Can\'t dot product two vectors of different lengths');
         }
@@ -37,7 +37,7 @@ export class Vector {
         return sum;
     }
 
-    static crossProduct(vec1: Vector, vec2: Vector) {
+    static crossProduct(vec1: Vector, vec2: Vector): Vector {
         return new Vector(
             vec1.vector[1] * vec2.vector[2] - vec1.vector[2] * vec2.vector[1],
             vec1.vector[2] * vec2.vector[0] - vec1.vector[0] * vec2.vector[2],
@@ -45,11 +45,11 @@ export class Vector {
         );
     }
 
-    getLength() {
+    getLength(): number {
         return this.vector.length;
     }
 
-    getMagnitude() {
+    getMagnitude(): number {
         let sum = 0;
         for (let i = 0; i < this.getLength(); i++) {
             sum += Math.pow(this.vector[i], 2);
@@ -57,7 +57,7 @@ export class Vector {
         return Math.sqrt(sum);
     }
 
-    toUnitVector() {
+    toUnitVector(): Vector {
         const magnitude = this.getMagnitude();
         const unitVector = [];
         for (let i = 0; i < this.getLength(); i++) {
