@@ -1,7 +1,6 @@
 import { Matrix } from './matrix';
 import { Rotation } from './interfaces';
 import { Vector } from './vector';
-import { cloneDeep } from 'lodash';
 
 export class Object3D {
     vertices: Vector[];
@@ -34,7 +33,7 @@ export class Object3D {
     }
 
     newObjectWithRotation(rotationMatrix: Matrix): Object3D {
-        const newObject = cloneDeep(this) as Object3D;
+        const newObject = structuredClone(this) as Object3D;
         newObject.vertices = newObject.vertices.map((vertex) => {
             const rotatedVertex = vertex.toMatrix().multiply(rotationMatrix);
             return Vector.fromArray(rotatedVertex.matrix[0]);

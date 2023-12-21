@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MixBlendModeComponent } from './mix-blend-mode.component';
-import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
+// import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -20,7 +20,7 @@ const routes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-        NgxMatColorPickerModule,
+        // NgxMatColorPickerModule,
         FormsModule,
         ReactiveFormsModule,
         MatFormFieldModule,
@@ -32,7 +32,7 @@ const routes: Routes = [
         MixBlendModeComponent,
     ],
     providers: [
-        { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
+        // { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
     ]
 })
 export class MixBlendModeModule {
