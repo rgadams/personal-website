@@ -1,3 +1,22 @@
+.monitoring {
+    position: relative;
+}
+
+.worker-status {
+    &::before {
+        content: '';
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        background-color: green;
+        border: 1px solid var(--primary-black);
+    }
+
+    &.busy::before {
+        background-color: red;
+    }
+}
+
 .parallel-run-column {
     margin: 0 1em;
 

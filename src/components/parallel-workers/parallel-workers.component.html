@@ -1,9 +1,9 @@
 <p class="warning-message">
-    <em class="fa fa-exclamation-triangle"></em> Something odd is happening with this page, you may need to refresh the
-    page before it works properly.
+    <em class="fa fa-exclamation-triangle"></em> This is a work in progress, there are some performance gains from using workers but not as much as there
+    probably should be.
 </p>
 <div class="row">
-    <div *ngIf="doneLoading" class="parallel-run-column col-xl">
+    <div class="parallel-run-column col-xl">
         <div class="form-group">
             <label for="numberOfWorkers">Number of Threads </label>
             <input class="form-control app-input" id="numberOfWorkers" type="number" [(ngModel)]="numberOfWorkers">

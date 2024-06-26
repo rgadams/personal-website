@@ -23,7 +23,7 @@ export class ExperienceComponent {
             endDate: 'September 2018',
             jobDescription: 'Used machine learning techniques with Twitter data to do stance detection on whether a given tweet was pro- or anti- mining corporations in Australia',
         }, {
-            title: 'Software Engineer I',
+            title: 'Software Engineer',
             location: 'East Lansing, MI',
             employer: 'Vertafore, Inc.',
             startDate: 'July 2019',
