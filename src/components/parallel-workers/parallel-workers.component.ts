@@ -6,13 +6,13 @@ import { finalize } from 'rxjs/operators';
 @Component({
     selector: 'app-parallel-workers',
     templateUrl: './parallel-workers.component.html',
-    styleUrls: ['./parallel-workers.component.less']
+    styleUrls: ['./parallel-workers.component.less'],
 })
 export class ParallelWorkersComponent implements OnInit {
     numberOfWorkers = 1;
     arrayLength = 5000;
     parallelWorkers: ParallelWorkers;
-    array: { leftMatrix: Matrix, rightMatrix: Matrix }[] = [];
+    array: { leftMatrix: Matrix; rightMatrix: Matrix }[] = [];
     runHistory = [];
 
     ngOnInit() {
@@ -23,13 +23,16 @@ export class ParallelWorkersComponent implements OnInit {
         this.reset();
         this.setup();
         console.log(this.parallelWorkers.t0);
-        this.parallelWorkers.run()
+        this.parallelWorkers
+            .run()
             .pipe(
-                finalize(() => this.runHistory.push({
-                    workers: this.numberOfWorkers,
-                    size: this.arrayLength,
-                    time: this.parallelWorkers.t1 - this.parallelWorkers.t0
-                }))
+                finalize(() =>
+                    this.runHistory.push({
+                        workers: this.numberOfWorkers,
+                        size: this.arrayLength,
+                        time: this.parallelWorkers.t1 - this.parallelWorkers.t0,
+                    })
+                )
             )
             .subscribe();
     }
@@ -46,7 +49,7 @@ export class ParallelWorkersComponent implements OnInit {
             }
             this.array.push({
                 leftMatrix,
-                rightMatrix
+                rightMatrix,
             });
         }
         this.parallelWorkers = new ParallelWorkers(this.array, this.numberOfWorkers);

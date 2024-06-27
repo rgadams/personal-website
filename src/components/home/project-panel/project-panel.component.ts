@@ -1,15 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Project } from 'src/components/home/project';
 
 @Component({
     selector: 'app-project-panel',
     templateUrl: './project-panel.component.html',
-    styleUrls: ['./project-panel.component.less']
+    styleUrls: ['./project-panel.component.less'],
 })
-export class ProjectPanelComponent implements OnInit {
+export class ProjectPanelComponent {
     @Input() project: Project;
-
-    ngOnInit(): void {
-    }
-
 }

@@ -17,10 +17,6 @@ const routes: Routes = [
         loadChildren: () => import('src/components/css/animation/animation.module').then(m => m.AnimationModule)
     },
     {
-        path: 'mix-blend-mode',
-        loadChildren: () => import('src/components/css/mix-blend-mode/mix-blend-mode.module').then(m => m.MixBlendModeModule)
-    },
-    {
         path: 'webassembly',
         loadChildren: () => import('src/components/webassembly/webassembly.module').then(m => m.WebassemblyModule)
     },

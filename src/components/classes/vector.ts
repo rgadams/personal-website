@@ -9,7 +9,7 @@ export class Vector {
 
     static fromArray(vector: number[]): Vector {
         const newVector = new Vector();
-        vector.forEach(item => {
+        vector.forEach((item) => {
             newVector.vector.push(item);
         });
         return newVector;
@@ -37,11 +37,11 @@ export class Vector {
         return sum;
     }
 
-    static crossProduct(vec1: Vector, vec2: Vector): Vector {
+    static crossProduct(leftVector: Vector, rightVector: Vector): Vector {
         return new Vector(
-            vec1.vector[1] * vec2.vector[2] - vec1.vector[2] * vec2.vector[1],
-            vec1.vector[2] * vec2.vector[0] - vec1.vector[0] * vec2.vector[2],
-            vec1.vector[0] * vec2.vector[1] - vec1.vector[1] * vec2.vector[0],
+            leftVector.vector[1] * rightVector.vector[2] - leftVector.vector[2] * rightVector.vector[1],
+            leftVector.vector[2] * rightVector.vector[0] - leftVector.vector[0] * rightVector.vector[2],
+            leftVector.vector[0] * rightVector.vector[1] - leftVector.vector[1] * rightVector.vector[0]
         );
     }
 

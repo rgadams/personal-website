@@ -1,11 +1,26 @@
 <header class="menu">
-  <a routerLink="" class="logo btn btn-primary"><span class="logo-r">R</span><span class="logo-a">A</span></a>
+  <a routerLink="" class="logo btn btn-primary">
+    <span class="logo-r">R</span>
+    <span class="logo-a">A</span>
+  </a>
   <a class="btn btn-primary" routerLink="">Home</a>
   <a class="btn btn-primary" routerLink="experience">Experience</a>
   <div ngbDropdown class="dropdown">
-    <button ngbDropdownToggle class="btn btn-primary" type="button" id="projectsMenuButton" aria-haspopup="true" aria-expanded="false">Projects</button>
+    <button
+      ngbDropdownToggle
+      class="btn btn-primary"
+      type="button"
+      id="projectsMenuButton"
+      aria-haspopup="true"
+      aria-expanded="false">
+      Projects
+    </button>
     <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="projectsMenuButton">
-      <a *ngFor="let item of menuItems" ngbDropdownItem class="dropdown-item" [routerLink]="item.link">{{item.name}}</a>
+      @for (item of menuItems; track item) {
+        <a ngbDropdownItem class="dropdown-item" [routerLink]="item.link">
+          {{ item.name }}
+        </a>
+      }
     </div>
   </div>
 </header>

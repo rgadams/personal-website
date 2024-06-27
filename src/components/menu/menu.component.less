@@ -1,108 +1,109 @@
 .menu {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0.25em;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.25em;
+  background: var(--accent-purple);
+  color: var(--primary-white);
+  align-items: center;
+  z-index: var(--z-menu);
+  position: relative;
+  box-shadow: 0 3px 5px var(--accent-purple-dark);
+
+  > * {
+    margin-left: 0.25em;
+  }
+
+  .logo {
+    cursor: pointer;
+    margin: auto;
+    margin-left: 0.25em;
+    font-size: 25px;
+
+    &::before {
+      content: none;
+    }
+
+    &:hover {
+      background-color: unset;
+    }
+  }
+
+  .logo-r,
+  .logo-a {
     background: var(--accent-purple);
-    color: var(--primary-white);
-    align-items: center;
-    z-index: var(--z-menu);
-    position: relative;
-    box-shadow: 0 3px 5px var(--accent-purple-dark);
+  }
 
-    > * {
-        margin-left: 0.25em;
+  .logo-r::after {
+    content: 'oy ';
+  }
+
+  .logo-a {
+    position: absolute;
+    transform: translateX(0);
+    transition: transform 250ms ease-out;
+  }
+
+  .logo:hover .logo-a {
+    transform: translateX(1.15em);
+  }
+
+  .logo-a::after {
+    content: 'dams';
+  }
+
+  .logo-r::after,
+  .logo-a::after {
+    position: absolute;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition:
+      visibility 0s,
+      transform 250ms ease-out;
+    z-index: -1;
+  }
+
+  .logo:hover .logo-r::after,
+  .logo:hover .logo-a::after {
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .dropdown:not(:last-child) {
+    padding-right: 0.25em;
+  }
+
+  .dropdown-menu.show {
+    background-color: var(--accent-purple);
+
+    .dropdown-item {
+      color: var(--primary-white);
+      text-align: right;
+      position: relative;
+      padding-right: 0.75em;
     }
 
-    .logo {
-        cursor: pointer;
-        margin: auto;
-        margin-left: 0.25em;
-        font-size: 25px;
-
-        &::before {
-            content: none;
-        }
-
-        &:hover {
-            background-color: unset;
-        }
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+      outline: none;
+      background-color: var(--accent-purple-dark);
     }
 
-    .logo-r,
-    .logo-a {
-        background: var(--accent-purple);
+    .dropdown-item::before {
+      content: '';
+      position: absolute;
+      border-right: 2px solid var(--primary-white);
+      transition: transform 250ms ease-in;
+      transform: scaleY(0);
+      inset: 0.2em;
     }
 
-    .logo-r::after {
-        content: 'oy ';
+    .dropdown-item:hover::before,
+    .dropdown-item:focus::before {
+      transform: scaleY(1);
     }
+  }
 
-    .logo-a {
-        position: absolute;
-        transform: translateX(0);
-        transition: transform 250ms ease-out;
-    }
-
-    .logo:hover .logo-a {
-        transform: translateX(1.15em);
-    }
-
-    .logo-a::after {
-        content: 'dams';
-    }
-
-    .logo-r::after,
-    .logo-a::after {
-        position: absolute;
-        transform: translateX(-100%);
-        visibility: hidden;
-        transition: visibility 0s, transform 250ms ease-out;
-        z-index: -1;
-    }
-
-    .logo:hover .logo-r::after,
-    .logo:hover .logo-a::after {
-        visibility: visible;
-        transform: translateX(0);
-    }
-
-    .dropdown:not(:last-child) {
-        padding-right: 0.25em;
-    }
-
-    .dropdown-menu.show {
-        background-color: var(--accent-purple);
-
-        .dropdown-item {
-            color: var(--primary-white);
-            text-align: right;
-            position: relative;
-            padding-right: 0.75em;
-        }
-
-        .dropdown-item:hover,
-        .dropdown-item:focus {
-            outline: none;
-            background-color: var(--accent-purple-dark);
-        }
-
-        .dropdown-item::before {
-            content: '';
-            position: absolute;
-            border-right: 2px solid var(--primary-white);
-            transition: transform 250ms ease-in;
-            transform: scaleY(0);
-            inset: 0.2em;
-        }
-
-        .dropdown-item:hover::before,
-        .dropdown-item:focus::before {
-            transform: scaleY(1);
-        }
-    }
-
-    .show > .btn-primary.dropdown-toggle {
-        background-color: var(--accent-purple-dark);
-    }
+  .show > .btn-primary.dropdown-toggle {
+    background-color: var(--accent-purple-dark);
+  }
 }
-

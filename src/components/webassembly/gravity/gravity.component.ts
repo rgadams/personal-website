@@ -5,7 +5,7 @@ import { memory } from 'src/assets/wasm-gravity/gravity_wasm_bg.wasm';
 @Component({
     selector: 'app-gravity',
     templateUrl: './gravity.component.html',
-    styleUrls: ['./gravity.component.less']
+    styleUrls: ['./gravity.component.less'],
 })
 export class GravityComponent implements OnInit {
     universe: Universe;
@@ -32,19 +32,21 @@ export class GravityComponent implements OnInit {
     render() {
         this.ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        const rawPositions = new Float64Array(memory.buffer,
+        const rawPositions = new Float64Array(
+            memory.buffer,
             this.universe.get_positions_ptr(),
-            this.numberOfElements * 3);
-        const masses = new Float64Array(memory.buffer,
-            this.universe.get_masses_ptr(),
-            this.numberOfElements);
-        const positions = [];
+            this.numberOfElements * 3
+        );
+        const masses = new Float64Array(memory.buffer, this.universe.get_masses_ptr(), this.numberOfElements);
         for (let i = 0; i < this.numberOfElements; i++) {
             const particle = Array.from(rawPositions.slice(i, i + 3));
-            positions.push(particle);
             this.ctx.fillStyle = this.colors[i];
-            this.ctx.fillRect(particle[0] * this.canvas.width / 4 + this.canvas.width / 2,
-                particle[1] * this.canvas.height / 4 + this.canvas.height / 2, (masses[i] / 1.0) * 10, (masses[i] / 1.0) * 10);
+            this.ctx.fillRect(
+                (particle[0] * this.canvas.width) / 4 + this.canvas.width / 2,
+                (particle[1] * this.canvas.height) / 4 + this.canvas.height / 2,
+                (masses[i]) * 10,
+                (masses[i]) * 10
+            );
         }
     }
 }

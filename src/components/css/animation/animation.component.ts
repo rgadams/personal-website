@@ -5,16 +5,16 @@ import { NavigationEnd, Router } from '@angular/router';
 @Component({
     selector: 'app-css-animations',
     templateUrl: './animation.component.html',
-    styleUrls: ['./animation.component.less']
+    styleUrls: ['./animation.component.less'],
 })
 export class AnimationComponent implements OnInit, OnDestroy {
-    currentPath;
+    currentPath: string;
     routerSubscription: Subscription;
     links = [
         { title: 'Square Game', link: 'square-game' },
         { title: 'Transitions', link: 'transitions' },
         { title: 'Animations', link: 'animations' },
-        { title: 'JavaScript Animations', link: 'javascript' }
+        { title: 'JavaScript Animations', link: 'javascript' },
     ];
 
     constructor(private router: Router) {}
@@ -30,17 +30,17 @@ export class AnimationComponent implements OnInit, OnDestroy {
         });
     }
 
-    private checkForSpecificRoute(): void {
-        if (this.router.url === '/animation') {
-            this.router.navigate([`${this.router.url}/${this.links[0].link}`]);
-        }
-    }
-
     ngOnDestroy(): void {
         this.routerSubscription.unsubscribe();
     }
 
     resetFocus(): void {
         window.focus();
+    }
+
+    private checkForSpecificRoute(): void {
+        if (this.router.url === '/animation') {
+            this.router.navigate([`${this.router.url}/${this.links[0].link}`]);
+        }
     }
 }

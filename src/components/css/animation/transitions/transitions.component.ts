@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-transitions',
     templateUrl: './transitions.component.html',
-    styleUrls: ['./transitions.component.less']
+    styleUrls: ['./transitions.component.less'],
 })
 export class TransitionsComponent {
-
     moveButton(): void {
         const button1 = document.getElementById('button1');
         if (button1.getAttribute('movedRight') === 'true') {

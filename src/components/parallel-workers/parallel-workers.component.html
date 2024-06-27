@@ -1,55 +1,56 @@
 <p class="warning-message">
-    <em class="fa fa-exclamation-triangle"></em> This is a work in progress, there are some performance gains from using workers but not as much as there
-    probably should be.
+  <em class="fa fa-exclamation-triangle"></em>
+  This is a work in progress, there are some performance gains from using workers but not as much as there probably
+  should be.
 </p>
 <div class="row">
-    <div class="parallel-run-column col-xl">
-        <div class="form-group">
-            <label for="numberOfWorkers">Number of Threads </label>
-            <input class="form-control app-input" id="numberOfWorkers" type="number" [(ngModel)]="numberOfWorkers">
-            <label for="sizeOfProblem">Size of Array </label>
-            <input class="form-control app-input" id="sizeOfProblem" type="number" [(ngModel)]="arrayLength">
-        </div>
-
-        <button class="run-parallel btn btn-primary" (click)="runCountInParallel()">Run Parallel Count</button>
-
-        <table id="parallel-history" class="app-table table" aria-describedby="Run Results">
-            <thead>
-            <tr class="parallel-header">
-                <th scope="col">Threads</th>
-                <th scope="col">Size of Array</th>
-                <th scope="col">Computation Time (ms)</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let row of runHistory">
-                <td>{{row.workers}}</td>
-                <td>{{row.size}}</td>
-                <td>{{row.time | number:'.2'}}</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <button *ngIf="runHistory.length > 0" class="clear-button btn btn-danger" (click)="runHistory = []">Clear Run
-            History
-        </button>
+  <div class="parallel-run-column col-xl">
+    <div class="form-group">
+      <label for="numberOfWorkers">Number of Threads</label>
+      <input class="form-control app-input" id="numberOfWorkers" type="number" [(ngModel)]="numberOfWorkers" />
+      <label for="sizeOfProblem">Size of Array</label>
+      <input class="form-control app-input" id="sizeOfProblem" type="number" [(ngModel)]="arrayLength" />
     </div>
-    <div class="col-sm explanation-column">
-        <p class="h2">Parallel Processing with Web Workers!</p>
 
-        <p>
-            Javascript is a single-threaded language, meaning it can only execute a single thing at any given time.
-            However, with evolving multi-core processors it was only a matter of time before Javascript got some sort of
-            parallel ability.
-            Web workers are a way to spawn more threads of execution than the main thread.
-            This page uses web workers to multiply lots of 10x10 matrices together.
-        </p>
-        <p>
-            To begin execution, specify the number of concurrent threads to spawn and the number of multiplications to
-            execute.
-            When ready, click the "Run Parallel Count" button to create the workers and multiply the matrices.
-            When the workers are finished processing all the matrices a new row in the table will appear detailing the
-            time that job took.
-        </p>
-    </div>
+    <button class="run-parallel btn btn-primary" (click)="runCountInParallel()">Run Parallel Count</button>
+
+    <table id="parallel-history" class="app-table table" aria-describedby="Run Results">
+      <thead>
+        <tr class="parallel-header">
+          <th scope="col">Threads</th>
+          <th scope="col">Size of Array</th>
+          <th scope="col">Computation Time (ms)</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of runHistory; track row) {
+          <tr>
+            <td>{{ row.workers }}</td>
+            <td>{{ row.size }}</td>
+            <td>{{ row.time | number: '.2' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    @if (runHistory.length > 0) {
+      <button class="clear-button btn btn-danger" (click)="runHistory = []">Clear Run History</button>
+    }
+  </div>
+  <div class="col-sm explanation-column">
+    <p class="h2">Parallel Processing with Web Workers!</p>
+
+    <p>
+      Javascript is a single-threaded language, meaning it can only execute a single thing at any given time. However,
+      with evolving multi-core processors it was only a matter of time before Javascript got some sort of parallel
+      ability. Web workers are a way to spawn more threads of execution than the main thread. This page uses web workers
+      to multiply lots of 10x10 matrices together.
+    </p>
+    <p>
+      To begin execution, specify the number of concurrent threads to spawn and the number of multiplications to
+      execute. When ready, click the "Run Parallel Count" button to create the workers and multiply the matrices. When
+      the workers are finished processing all the matrices a new row in the table will appear detailing the time that
+      job took.
+    </p>
+  </div>
 </div>

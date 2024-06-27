@@ -1,51 +1,48 @@
 .monitoring {
-    position: relative;
+  position: relative;
 }
 
 .worker-status {
-    &::before {
-        content: '';
-        position: absolute;
-        width: 1em;
-        height: 1em;
-        background-color: green;
-        border: 1px solid var(--primary-black);
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    background-color: green;
+    border: 1px solid var(--primary-black);
+  }
 
-    &.busy::before {
-        background-color: red;
-    }
+  &.busy::before {
+    background-color: red;
+  }
 }
 
 .parallel-run-column {
-    margin: 0 1em;
+  margin: 0 1em;
 
-    .form-group {
-        margin: 1em 0;
+  .form-group {
+    margin: 1em 0;
 
-        label {
-            font-family: var(--font-header);
-            margin-bottom: 0.5em;
-        }
+    label {
+      font-family: var(--font-header);
+      margin-bottom: 0.5em;
     }
+  }
 
-    .run-parallel {
-        margin-bottom: 1em;
-    }
+  .run-parallel {
+    margin-bottom: 1em;
+  }
 }
 
 .explanation-column {
-    margin-top: 1rem;
+  margin: 1rem 2em 2em;
 }
 
 .warning-message {
-    background-color: var(--accent-pink);
-    border-radius: 0.5em;
-    color: var(--primary-white);
-    margin: 1em;
-    padding: 1em;
+  background-color: var(--accent-pink);
+  border-radius: 0.5em;
+  color: var(--primary-white);
+  margin: 1em;
+  padding: 1em;
 }
 
-.explanation-column {
-    margin: 2em;
-}

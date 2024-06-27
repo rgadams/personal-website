@@ -3,19 +3,25 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-primes',
     templateUrl: './primes.component.html',
-    styleUrls: ['./primes.component.less']
+    styleUrls: ['./primes.component.less'],
 })
 export class PrimesComponent implements OnInit {
     wasmPrimes: typeof import('src/assets/sieve-of-eratosthenes/wasm_prime_number_generator');
     numberOfPrimes = 1000;
-    simulations = [];
+    simulations: {
+        numberOfPrimes: number;
+        wasmTime: number;
+        jsTime: number;
+    }[] = [];
 
     ngOnInit(): void {
-        this.loadModule().then((module) => {
-            this.wasmPrimes = module;
-        }).then(() => {
-            this.runSimulation();
-        });
+        this.loadModule()
+            .then((module) => {
+                this.wasmPrimes = module;
+            })
+            .then(() => {
+                this.runSimulation();
+            });
     }
 
     async loadModule() {
@@ -24,9 +30,9 @@ export class PrimesComponent implements OnInit {
 
     runSimulation() {
         const t1 = performance.now();
-        const p1 = this.wasmPrimes.sieve_of_eratosthenes(this.numberOfPrimes);
+        this.wasmPrimes.sieve_of_eratosthenes(this.numberOfPrimes);
         const t2 = performance.now();
-        const p2 = this.sieve_of_eratosthenes(this.numberOfPrimes);
+        this.sieve_of_eratosthenes(this.numberOfPrimes);
         const t3 = performance.now();
 
         const wasmTime = t2 - t1;
@@ -35,7 +41,7 @@ export class PrimesComponent implements OnInit {
         this.simulations.push({
             numberOfPrimes: this.numberOfPrimes,
             wasmTime,
-            jsTime
+            jsTime,
         });
     }
 
@@ -59,4 +65,3 @@ export class PrimesComponent implements OnInit {
         return primes;
     }
 }
-

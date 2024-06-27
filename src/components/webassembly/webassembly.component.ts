@@ -5,11 +5,10 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'app-webassembly',
     templateUrl: './webassembly.component.html',
-    styleUrls: ['./webassembly.component.less']
+    styleUrls: ['./webassembly.component.less'],
 })
 export class WebassemblyComponent implements OnInit, OnDestroy {
-
-    currentPath;
+    currentPath: string;
     routerSubscription: Subscription;
     links = [
         { title: 'Game of Life', link: 'life' },
@@ -31,17 +30,17 @@ export class WebassemblyComponent implements OnInit, OnDestroy {
         });
     }
 
-    private checkForSpecificRoute() {
-        if (this.router.url === '/webassembly') {
-            this.router.navigate([`${this.router.url}/${this.links[0].link}`]);
-        }
-    }
-
     ngOnDestroy() {
         this.routerSubscription.unsubscribe();
     }
 
     resetFocus() {
         window.focus();
+    }
+
+    private checkForSpecificRoute() {
+        if (this.router.url === '/webassembly') {
+            this.router.navigate([`${this.router.url}/${this.links[0].link}`]);
+        }
     }
 }

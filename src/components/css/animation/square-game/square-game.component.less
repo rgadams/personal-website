@@ -1,174 +1,177 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 
-    --grid-element-width: 10em;
-    --grid-element-gap: 0.5em;
-    --grid-movement-duration: 0.2s;
+  --grid-element-width: 10em;
+  --grid-element-gap: 0.5em;
+  --grid-movement-duration: 0.2s;
 }
 
 .error-message {
-    position: absolute;
-    top: 3em;
-    color: var(--accent-pink);
-    font-size: 1.2em;
-    padding: 1em;
+  position: absolute;
+  top: 3em;
+  color: var(--accent-pink);
+  font-size: 1.2em;
+  padding: 1em;
 }
 
 .grid-game {
-    display: grid;
-    grid-template-columns: var(--grid-element-width) var(--grid-element-width) var(--grid-element-width) var(--grid-element-width);
-    grid-template-rows: var(--grid-element-width) var(--grid-element-width) var(--grid-element-width) var(--grid-element-width);
-    grid-gap: var(--grid-element-gap);
-    padding: 2em;
-    border: 2px solid var(--accent-purple-dark);
+  display: grid;
+  grid-template-columns:
+    var(--grid-element-width) var(--grid-element-width) var(--grid-element-width)
+    var(--grid-element-width);
+  grid-template-rows:
+    var(--grid-element-width) var(--grid-element-width) var(--grid-element-width)
+    var(--grid-element-width);
+  grid-gap: var(--grid-element-gap);
+  padding: 2em;
+  border: 2px solid var(--accent-purple-dark);
 
-    .grid-square {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--primary-white);
-        border: 2px solid var(--accent-purple);
-    }
+  .grid-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-white);
+    border: 2px solid var(--accent-purple);
+  }
 
-    .grid-square:hover {
-        animation: pulse 1s infinite alternate;
-        cursor: pointer;
-    }
+  .grid-square:hover {
+    animation: pulse 1s infinite alternate;
+    cursor: pointer;
+  }
 
-    .open-square {
-        visibility: hidden;
-    }
+  .open-square {
+    visibility: hidden;
+  }
 
-    .grid-square[moveDirection='up'] {
-        animation: moveUp;
-        width: var(--grid-element-width);
-        height: var(--grid-element-width);
-        animation-duration: var(--grid-movement-duration);
-    }
+  .grid-square[moveDirection='up'] {
+    animation: moveUp;
+    width: var(--grid-element-width);
+    height: var(--grid-element-width);
+    animation-duration: var(--grid-movement-duration);
+  }
 
-    .grid-square[moveDirection='down'] {
-        animation: moveDown;
-        width: var(--grid-element-width);
-        height: var(--grid-element-width);
-        animation-duration: var(--grid-movement-duration);
-    }
+  .grid-square[moveDirection='down'] {
+    animation: moveDown;
+    width: var(--grid-element-width);
+    height: var(--grid-element-width);
+    animation-duration: var(--grid-movement-duration);
+  }
 
-    .grid-square[moveDirection='right'] {
-        animation: moveRight;
-        width: var(--grid-element-width);
-        height: var(--grid-element-width);
-        animation-duration: var(--grid-movement-duration);
-    }
+  .grid-square[moveDirection='right'] {
+    animation: moveRight;
+    width: var(--grid-element-width);
+    height: var(--grid-element-width);
+    animation-duration: var(--grid-movement-duration);
+  }
 
-    .grid-square[moveDirection='left'] {
-        animation: moveLeft;
-        width: var(--grid-element-width);
-        height: var(--grid-element-width);
-        animation-duration: var(--grid-movement-duration);
-    }
+  .grid-square[moveDirection='left'] {
+    animation: moveLeft;
+    width: var(--grid-element-width);
+    height: var(--grid-element-width);
+    animation-duration: var(--grid-movement-duration);
+  }
 
-    .game-over-1 {
-        animation: danceOne 4s infinite alternate;
-    }
+  .game-over-1 {
+    animation: danceOne 4s infinite alternate;
+  }
 
-    .game-over-2 {
-        animation: danceTwo 4s infinite;
-    }
+  .game-over-2 {
+    animation: danceTwo 4s infinite;
+  }
 }
 
 @keyframes pulse {
-    from {
-        background-color: var(--primary-white);
-        transform: scale(1);
+  from {
+    background-color: var(--primary-white);
+    transform: scale(1);
+  }
 
-    }
-
-    to {
-        background-color: var(--accent-purple-light);
-        transform: scale(1.05);
-    }
+  to {
+    background-color: var(--accent-purple-light);
+    transform: scale(1.05);
+  }
 }
 
 @keyframes danceOne {
-    from {
-        background-color: var(--accent-purple-dark);
-        color: var(--primary-white);
-        transform: rotateZ(0deg);
-    }
+  from {
+    background-color: var(--accent-purple-dark);
+    color: var(--primary-white);
+    transform: rotateZ(0deg);
+  }
 
-    50% {
-        background-color: var(--accent-purple-light);
-        color: var(--primary-black);
-        transform: rotateZ(360deg);
-    }
+  50% {
+    background-color: var(--accent-purple-light);
+    color: var(--primary-black);
+    transform: rotateZ(360deg);
+  }
 
-    to {
-        background-color: var(--accent-purple-dark);
-        color: var(--primary-white);
-        transform: rotateZ(720deg);
-    }
+  to {
+    background-color: var(--accent-purple-dark);
+    color: var(--primary-white);
+    transform: rotateZ(720deg);
+  }
 }
 
 @keyframes danceTwo {
-    from {
-        background-color: var(--accent-purple-light);
-        color: var(--primary-black);
-        transform: rotateZ(0deg);
-    }
+  from {
+    background-color: var(--accent-purple-light);
+    color: var(--primary-black);
+    transform: rotateZ(0deg);
+  }
 
-    50% {
-        background-color: var(--accent-purple-dark);
-        color: var(--primary-white);
-        transform: rotateZ(-360deg);
-    }
+  50% {
+    background-color: var(--accent-purple-dark);
+    color: var(--primary-white);
+    transform: rotateZ(-360deg);
+  }
 
-    to {
-        background-color: var(--accent-purple-light);
-        color: var(--primary-black);
-        transform: rotateZ(-720deg);
-    }
+  to {
+    background-color: var(--accent-purple-light);
+    color: var(--primary-black);
+    transform: rotateZ(-720deg);
+  }
 }
 
 @keyframes moveUp {
-    from {
-        margin-top: 0;
-    }
+  from {
+    margin-top: 0;
+  }
 
-    to {
-        margin-top: calc(-1 * (var(--grid-element-width) + var(--grid-element-gap)));
-    }
+  to {
+    margin-top: calc(-1 * (var(--grid-element-width) + var(--grid-element-gap)));
+  }
 }
 
 @keyframes moveDown {
-    from {
-        margin-top: 0;
-    }
+  from {
+    margin-top: 0;
+  }
 
-    to {
-        margin-top: calc(var(--grid-element-width) + var(--grid-element-gap));
-    }
+  to {
+    margin-top: calc(var(--grid-element-width) + var(--grid-element-gap));
+  }
 }
 
 @keyframes moveRight {
-    from {
-        margin-left: 0;
-    }
+  from {
+    margin-left: 0;
+  }
 
-    to {
-        margin-left: calc((var(--grid-element-width) + var(--grid-element-gap)));
-    }
+  to {
+    margin-left: calc((var(--grid-element-width) + var(--grid-element-gap)));
+  }
 }
 
 @keyframes moveLeft {
-    from {
-        margin-left: 0;
-    }
+  from {
+    margin-left: 0;
+  }
 
-    to {
-        margin-left: calc(-1 * (var(--grid-element-width) + var(--grid-element-gap)));
-    }
+  to {
+    margin-left: calc(-1 * (var(--grid-element-width) + var(--grid-element-gap)));
+  }
 }

@@ -1,34 +1,36 @@
 <div class="primes">
-    <div class="description">
-        <h1>Testing WebAssembly Performance</h1>
-        <p>
-            This is a test of how a Rust/WebAssembly implementation of the Sieve of Eratosthenes performs against the
-            same algorithm implemented in JavaScript. Input a number of primes you'd like to calculate and both implementations
-            will find those primes, then output the time it took into the table below.
-        </p>
-    </div>
+  <div class="description">
+    <h1>Testing WebAssembly Performance</h1>
+    <p>
+      This is a test of how a Rust/WebAssembly implementation of the Sieve of Eratosthenes performs against the same
+      algorithm implemented in JavaScript. Input a number of primes you'd like to calculate and both implementations
+      will find those primes, then output the time it took into the table below.
+    </p>
+  </div>
 
-    <div class="input-line">
-        <label for="calculate-primes-input">Number of Primes: </label>
-        <input class="form-control app-input" id="calculate-primes-input" type="number" [(ngModel)]="numberOfPrimes">
-        <button type="button" class="btn btn-primary" (click)="runSimulation()">Run</button>
-        <button type="button" class="btn btn-danger" (click)="clearRuns()">Clear</button>
-    </div>
+  <div class="input-line">
+    <label for="calculate-primes-input">Number of Primes:</label>
+    <input class="form-control app-input" id="calculate-primes-input" type="number" [(ngModel)]="numberOfPrimes" />
+    <button type="button" class="btn btn-primary" (click)="runSimulation()">Run</button>
+    <button type="button" class="btn btn-danger" (click)="clearRuns()">Clear</button>
+  </div>
 
-    <table class="app-table simulation-table" aria-describedby="prime simulations">
-        <thead>
-            <tr>
-                <th scope="col">Number of Primes</th>
-                <th scope="col">Time (ms) using WebAssembly</th>
-                <th scope="col">Time (ms) using JavaScript</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let simulation of simulations">
-                <td>{{simulation.numberOfPrimes}}</td>
-                <td>{{simulation.wasmTime | number:'.2'}}</td>
-                <td>{{simulation.jsTime  | number:'.2'}}</td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="app-table simulation-table" aria-describedby="prime simulations">
+    <thead>
+      <tr>
+        <th scope="col">Number of Primes</th>
+        <th scope="col">Time (ms) using WebAssembly</th>
+        <th scope="col">Time (ms) using JavaScript</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (simulation of simulations; track simulation) {
+        <tr>
+          <td>{{ simulation.numberOfPrimes }}</td>
+          <td>{{ simulation.wasmTime | number: '.2' }}</td>
+          <td>{{ simulation.jsTime | number: '.2' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </div>

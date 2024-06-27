@@ -1,55 +1,55 @@
 .nav-tabs {
-    background-color: var(--accent-purple);
-    border: none;
-    z-index: var(--z-nav-tabs);
-    padding-top: 0.25em;
-    box-shadow: 0 3px 5px var(--accent-purple-dark);
+  background-color: var(--accent-purple);
+  border: none;
+  z-index: var(--z-nav-tabs);
+  padding-top: 0.25em;
+  box-shadow: 0 3px 5px var(--accent-purple-dark);
 }
 
 .nav-item {
-    background-color: inherit;
-    margin-right: 0.25em;
+  background-color: inherit;
+  margin-right: 0.25em;
 }
 
 .nav-link.active {
-    background-color: var(--accent-purple-dark);
-    color: var(--primary-white);
+  background-color: var(--accent-purple-dark);
+  color: var(--primary-white);
 }
 
 .nav-link {
-    position: relative;
-    color: var(--primary-white);
-    border-radius: 0;
-    border: none;
-    font-family: var(--font-header);
-    text-decoration: none;
+  position: relative;
+  color: var(--primary-white);
+  border-radius: 0;
+  border: none;
+  font-family: var(--font-header);
+  text-decoration: none;
 }
 
 .nav-link:focus,
 .nav-link:hover {
-    outline: none;
-    background-color: var(--accent-purple-dark);
+  outline: none;
+  background-color: var(--accent-purple-dark);
 }
 
 .nav-link.active::after {
-    position: absolute;
-    inset: 0.2em;
-    content: '';
-    border-top: 2px solid var(--primary-white);
-    border-left: 2px solid var(--primary-white);
-    border-right: 2px solid var(--primary-white);
+  position: absolute;
+  inset: 0.2em;
+  content: '';
+  border-top: 2px solid var(--primary-white);
+  border-left: 2px solid var(--primary-white);
+  border-right: 2px solid var(--primary-white);
 }
 
 .nav-link::before {
-    border-bottom: 2px solid var(--primary-white);
-    content: '';
-    position: absolute;
-    inset: 0.2em;
-    transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
+  border-bottom: 2px solid var(--primary-white);
+  content: '';
+  position: absolute;
+  inset: 0.2em;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
 }
 
 .nav-link:hover::before,
 .nav-link:focus::before {
-    transform: scaleX(1);
+  transform: scaleX(1);
 }

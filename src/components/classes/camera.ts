@@ -10,15 +10,21 @@ export class Camera {
     }
 
     getOrientation(): Vector {
-        const orientationVector = new Vector(this.position.vector[0] - this.pointingAt.vector[0],
+        const orientationVector = new Vector(
+            this.position.vector[0] - this.pointingAt.vector[0],
             this.position.vector[1] - this.pointingAt.vector[1],
-            this.position.vector[2] - this.pointingAt.vector[2]);
-        const vectorLength = Math.sqrt(Math.pow(orientationVector.vector[0], 2)
-            + Math.pow(orientationVector.vector[1], 2)
-            + Math.pow(orientationVector.vector[1], 2));
-        return new Vector(orientationVector.vector[0] / vectorLength,
+            this.position.vector[2] - this.pointingAt.vector[2]
+        );
+        const vectorLength = Math.sqrt(
+            Math.pow(orientationVector.vector[0], 2) +
+                Math.pow(orientationVector.vector[1], 2) +
+                Math.pow(orientationVector.vector[1], 2)
+        );
+        return new Vector(
+            orientationVector.vector[0] / vectorLength,
             orientationVector.vector[1] / vectorLength,
-            orientationVector.vector[2] / vectorLength);
+            orientationVector.vector[2] / vectorLength
+        );
     }
 
     getPosition(): Vector {

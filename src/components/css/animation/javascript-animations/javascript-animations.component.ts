@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-javascript-animations',
     templateUrl: './javascript-animations.component.html',
-    styleUrls: ['./javascript-animations.component.less']
+    styleUrls: ['./javascript-animations.component.less'],
 })
 export class JavascriptAnimationsComponent implements OnInit {
     isTitleBig = false;
@@ -16,12 +16,12 @@ export class JavascriptAnimationsComponent implements OnInit {
     isMouseDown: boolean;
 
     ngOnInit(): void {
-        this.boxElement = document.getElementById('drag-me') as HTMLElement;
-        this.containerElement = document.getElementById('container') as HTMLElement;
+        this.boxElement = document.getElementById('drag-me');
+        this.containerElement = document.getElementById('container');
         this.boxElement.addEventListener('mousedown', ($event) => this.mouseDown($event));
         document.addEventListener('mousemove', ($event) => this.dragBox($event));
         document.addEventListener('mouseup', ($event) => this.mouseUp($event));
-        (document.getElementById('animation-title') as HTMLElement).style.fontSize = '2em';
+        (document.getElementById('animation-title')).style.fontSize = '2em';
         document.addEventListener('keydown', ($event) => this.animateTitle($event));
     }
 
@@ -61,27 +61,29 @@ export class JavascriptAnimationsComponent implements OnInit {
 
     animateTitle($event: KeyboardEvent): void {
         if ($event.code === 'Enter') {
-            const title = document.getElementById('animation-title') as HTMLElement;
+            const title = document.getElementById('animation-title');
             const fontSizeChange = 1;
             const fontSizeChangeRate = 50;
-            const currentFontSize = getFontSize(title);
+            const currentFontSize = this.getFontSize(title);
 
             const animation = setInterval(() => {
-                if (getFontSize(title) < currentFontSize + fontSizeChange && !this.isTitleBig) {
-                    title.style.fontSize = (getFontSize(title) + fontSizeChange / fontSizeChangeRate).toString() + 'em';
-                    console.log('current font size is' + getFontSize(title));
-                } else if (getFontSize(title) > (currentFontSize - fontSizeChange) && this.isTitleBig) {
-                    title.style.fontSize = (getFontSize(title) - fontSizeChange / fontSizeChangeRate).toString() + 'em';
-                    console.log('current font size is' + getFontSize(title));
+                if (this.getFontSize(title) < currentFontSize + fontSizeChange && !this.isTitleBig) {
+                    title.style.fontSize = (this.getFontSize(title) + fontSizeChange / fontSizeChangeRate).toString() + 'em';
+                    console.log('current font size is' + this.getFontSize(title));
+                } else if (this.getFontSize(title) > currentFontSize - fontSizeChange && this.isTitleBig) {
+                    title.style.fontSize = (this.getFontSize(title) - fontSizeChange / fontSizeChangeRate).toString() + 'em';
+                    console.log('current font size is' + this.getFontSize(title));
                 } else {
                     clearInterval(animation);
                     this.isTitleBig = !this.isTitleBig;
                 }
             }, 5);
 
-            function getFontSize(el: HTMLElement): number {
-                return parseFloat(el.style.fontSize.replace('em', ''));
-            }
+
         }
+    }
+
+    getFontSize(el: HTMLElement): number {
+        return parseFloat(el.style.fontSize.replace('em', ''));
     }
 }

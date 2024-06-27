@@ -1,8 +1,9 @@
 <ul ngbNav [activeId]="currentPath" class="nav-tabs" destroyOnHide="true" (navChange)="resetFocus()">
-    <li [ngbNavItem]="link.link" *ngFor="let link of links">
-        <a ngbNavLink [routerLink]="link.link">{{ link.title }}</a>
+  @for (link of links; track link) {
+    <li [ngbNavItem]="link.link">
+      <a ngbNavLink [routerLink]="link.link">{{ link.title }}</a>
     </li>
+  }
 </ul>
 
 <router-outlet></router-outlet>
-

@@ -3,14 +3,14 @@ import { TestBed } from '@angular/core/testing';
 import { WebGlService } from './web-gl.service';
 
 describe('WebGlService', () => {
-  let service: WebGlService;
+    let service: WebGlService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(WebGlService);
-  });
+    beforeEach(() => {
+        TestBed.configureTestingModule({});
+        service = TestBed.inject(WebGlService);
+    });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+    it('should be created', () => {
+        expect(service).toBeTruthy();
+    });
 });

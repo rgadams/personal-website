@@ -17,7 +17,7 @@ export class Matrix {
     /**
      * Create a blank square matrix of an input size (all zeroes or identity matrix)
      * @param dim - size of the square matrix
-     * @param identity - whether or not to put 1's in the diagonals to make an identity matrix
+     * @param identity - whether to put 1's in the diagonals to make an identity matrix
      */
     static createBlankSquareMatrixFromDimensions(dim: number, identity = false): Matrix {
         const newMatrix = [];
@@ -77,28 +77,9 @@ export class Matrix {
             for (let j = 0; j < matrix.rows; j++) {
                 Matrix.getCofactor(matrix, tempMatrix, i, j, matrix.rows);
 
-                sign = ((i + j) % 2 === 0) ? 1 : -1;
+                sign = (i + j) % 2 === 0 ? 1 : -1;
 
-                adj.matrix[j][i] = (sign) * (Matrix.getDeterminant(tempMatrix, matrix.rows - 1));
-            }
-        }
-    }
-
-    /**
-     * Copied from https://www.geeksforgeeks.org/determinant-of-a-matrix/.
-     */
-    private static getCofactor(matrix: Matrix, tempMatrix: Matrix, p: number, q: number, n: number) {
-        let i = 0;
-        let j = 0;
-        for (let row = 0; row < n; row++) {
-            for (let column = 0; column < n; column++) {
-                if (row !== p && column !== q) {
-                    tempMatrix.matrix[i][j++] = matrix.matrix[row][column];
-                    if (j === n - 1) {
-                        j = 0;
-                        i++;
-                    }
-                }
+                adj.matrix[j][i] = sign * Matrix.getDeterminant(tempMatrix, matrix.rows - 1);
             }
         }
     }
@@ -120,6 +101,25 @@ export class Matrix {
             sign = -1 * sign;
         }
         return d;
+    }
+
+    /**
+     * Copied from https://www.geeksforgeeks.org/determinant-of-a-matrix/.
+     */
+    private static getCofactor(matrix: Matrix, tempMatrix: Matrix, p: number, q: number, n: number) {
+        let i = 0;
+        let j = 0;
+        for (let row = 0; row < n; row++) {
+            for (let column = 0; column < n; column++) {
+                if (row !== p && column !== q) {
+                    tempMatrix.matrix[i][j++] = matrix.matrix[row][column];
+                    if (j === n - 1) {
+                        j = 0;
+                        i++;
+                    }
+                }
+            }
+        }
     }
 
     get(row: number, column: number) {

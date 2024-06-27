@@ -1,15 +1,20 @@
 <div class="home">
-    <section class="profile">
-        <div class="header">
-            <h1>Hello, I am <span class="accent-purple">Roy Adams</span></h1>
-            <h2>Software Engineer</h2>
-            <h4>with an interest in all things front-end development</h4>
-        </div>
-    </section>
-    <section class="panels">
-        <h3>Projects</h3>
-        <div class="project-panels">
-            <app-project-panel *ngFor="let project of projectList" [project]="project" class="home-panel"></app-project-panel>
-        </div>
-    </section>
+  <section class="profile">
+    <div class="header">
+      <h1>
+        Hello, I am
+        <span class="accent-purple">Roy Adams</span>
+      </h1>
+      <h2>Software Engineer</h2>
+      <h4>with an interest in all things front-end development</h4>
+    </div>
+  </section>
+  <section class="panels">
+    <h3>Projects</h3>
+    <div class="project-panels">
+      @for (project of projectList; track project) {
+        <app-project-panel [project]="project" class="home-panel"></app-project-panel>
+      }
+    </div>
+  </section>
 </div>

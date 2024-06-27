@@ -1,54 +1,54 @@
 :host {
-    margin: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  margin: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .description {
-    margin: 1em;
+  margin: 1em;
 }
 
 .game-of-life {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .game-of-life-grid {
-    display: grid;
-    grid-auto-rows: auto;
-    grid-auto-columns: auto;
-    grid-template-columns: repeat(64, 10px);
-    grid-template-rows: repeat(64, 10px);
-    grid-gap: 2px;
+  display: grid;
+  grid-auto-rows: auto;
+  grid-auto-columns: auto;
+  grid-template-columns: repeat(64, 10px);
+  grid-template-rows: repeat(64, 10px);
+  grid-gap: 2px;
 
-    .alive {
-        background: var(--accent-purple);
-    }
+  .alive {
+    background: var(--accent-purple);
+  }
 
-    .dead {
-        background: white;
-    }
+  .dead {
+    background: white;
+  }
 }
 
 .button-row {
-    display: flex;
-    flex-direction: row;
-    margin-top: 0.5em;
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5em;
 
-    > * {
-        margin-right: 0.5em;
-        align-self: center;
-    }
+  > * {
+    margin-right: 0.5em;
+    align-self: center;
+  }
 
-    .btn-random {
-        background-color: var(--accent-blue);
-        color: var(--primary-white);
-    }
+  .btn-random {
+    background-color: var(--accent-blue);
+    color: var(--primary-white);
+  }
 
-    .btn-random:hover {
-        background-color: var(--accent-blue-dark);
-    }
+  .btn-random:hover {
+    background-color: var(--accent-blue-dark);
+  }
 }

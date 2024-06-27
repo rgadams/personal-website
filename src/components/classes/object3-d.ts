@@ -20,26 +20,26 @@ export class Object3D {
     }
 
     static createRotationMatrix(rotation: Rotation): Matrix {
-        const rotationMatrixForX = new Matrix(
-            [[1, 0, 0],
-                [0, Math.cos(rotation.x), -1 * Math.sin(rotation.x)],
-                [0, Math.sin(rotation.x), Math.cos(rotation.x)]]
-        );
-        const rotationMatrixForY = new Matrix(
-            [[Math.cos(rotation.y), 0, Math.sin(rotation.y)],
-                [0, 1, 0],
-                [-1 * Math.sin(rotation.y), 0, Math.cos(rotation.y)]]
-        );
-        const rotationMatrixForZ = new Matrix(
-            [[Math.cos(rotation.z), -1 * Math.sin(rotation.z), 0],
-                [Math.sin(rotation.z), Math.cos(rotation.z), 0],
-                [0, 0, 1]]
-        );
+        const rotationMatrixForX = new Matrix([
+            [1, 0, 0],
+            [0, Math.cos(rotation.x), -1 * Math.sin(rotation.x)],
+            [0, Math.sin(rotation.x), Math.cos(rotation.x)],
+        ]);
+        const rotationMatrixForY = new Matrix([
+            [Math.cos(rotation.y), 0, Math.sin(rotation.y)],
+            [0, 1, 0],
+            [-1 * Math.sin(rotation.y), 0, Math.cos(rotation.y)],
+        ]);
+        const rotationMatrixForZ = new Matrix([
+            [Math.cos(rotation.z), -1 * Math.sin(rotation.z), 0],
+            [Math.sin(rotation.z), Math.cos(rotation.z), 0],
+            [0, 0, 1],
+        ]);
         return rotationMatrixForX.multiply(rotationMatrixForY).multiply(rotationMatrixForZ);
     }
 
     newObjectWithRotation(rotationMatrix: Matrix): Object3D {
-        const newObject = Object3D.createCopy(this) as Object3D;
+        const newObject = Object3D.createCopy(this);
         newObject.vertices = newObject.vertices.map((vertex) => {
             const rotatedVertex = vertex.toMatrix().multiply(rotationMatrix);
             return Vector.fromArray(rotatedVertex.matrix[0]);
