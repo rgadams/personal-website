@@ -1,11 +1,9 @@
 docs
 dist
 **/*.json
-**/*.module.ts
 **/*.md
 **/*wasm*
 **/*.wasm
-karma.conf.js
-webpack.config.js
-polyfills.ts
-!*.ts
+**/*.js
+**/*.ts
+index.html

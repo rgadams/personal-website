@@ -194,7 +194,7 @@ export class Gravity2Component implements OnInit {
                 this.cubeRotation = this.startRotation + ($event.clientX - this.startX) / (this.canvas.width / 10);
             }
         });
-        document.addEventListener('mouseup', ($event) => {
+        document.addEventListener('mouseup', () => {
             this.mousedown = false;
             this.startRotation = this.cubeRotation;
         });
@@ -217,15 +217,15 @@ export class Gravity2Component implements OnInit {
         particlePositions.forEach((particle, particleIndex) => {
             this.cubeVertexPositions.forEach((element, index) => {
                 switch (index % 3) {
-                case 0:
-                    particles.push(particle[0] + (element * masses[particleIndex]) / 0.5);
-                    break;
-                case 1:
-                    particles.push(particle[1] + (element * masses[particleIndex]) / 0.5);
-                    break;
-                case 2:
-                    particles.push(particle[2] + (element * masses[particleIndex]) / 0.5);
-                    break;
+                    case 0:
+                        particles.push(particle[0] + (element * masses[particleIndex]) / 0.5);
+                        break;
+                    case 1:
+                        particles.push(particle[1] + (element * masses[particleIndex]) / 0.5);
+                        break;
+                    case 2:
+                        particles.push(particle[2] + (element * masses[particleIndex]) / 0.5);
+                        break;
                 }
             });
         });

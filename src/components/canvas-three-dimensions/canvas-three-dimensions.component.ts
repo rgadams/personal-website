@@ -43,22 +43,22 @@ export class CanvasThreeDimensionsComponent implements OnInit {
             lines.forEach((line) => {
                 const lineParts = line.split(' ');
                 switch (lineParts[0]) {
-                case 'v':
-                    this.currentObject.vertices.push(new Vector(
-                        parseFloat(lineParts[1]),
-                        parseFloat(lineParts[2]),
-                        parseFloat(lineParts[3])
-                    ));
-                    break;
-                case 'f':
-                    this.currentObject.faces.push([
-                        parseInt(lineParts[1], 10),
-                        parseInt(lineParts[2], 10),
-                        parseInt(lineParts[3], 10),
-                    ]);
-                    break;
-                default:
-                    // Either a comment or empty line
+                    case 'v':
+                        this.currentObject.vertices.push(new Vector(
+                            parseFloat(lineParts[1]),
+                            parseFloat(lineParts[2]),
+                            parseFloat(lineParts[3])
+                        ));
+                        break;
+                    case 'f':
+                        this.currentObject.faces.push([
+                            parseInt(lineParts[1], 10),
+                            parseInt(lineParts[2], 10),
+                            parseInt(lineParts[3], 10),
+                        ]);
+                        break;
+                    default:
+                        // Either a comment or empty line
                 }
             });
         });
