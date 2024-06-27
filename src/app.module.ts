@@ -10,7 +10,6 @@ import { CanvasThreeDimensionsComponent } from './components/canvas-three-dimens
 import { ParallelWorkersComponent } from './components/parallel-workers/parallel-workers.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-import { GridComponent } from 'src/components/grid/grid.component';
 import { AboutComponent } from 'src/components/about/about.component';
 import { MenuModule } from './components/menu/menu.module';
 import { ReversePipe } from './pipes/reverse.pipe';
@@ -20,7 +19,6 @@ import { ReversePipe } from './pipes/reverse.pipe';
         AppComponent,
         AboutComponent,
         CanvasThreeDimensionsComponent,
-        GridComponent,
         ParallelWorkersComponent
     ],
     imports: [

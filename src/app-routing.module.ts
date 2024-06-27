@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CanvasThreeDimensionsComponent } from './components/canvas-three-dimensions/canvas-three-dimensions.component';
 import { ParallelWorkersComponent } from './components/parallel-workers/parallel-workers.component';
-import { GridComponent } from 'src/components/grid/grid.component';
 import { AboutComponent } from 'src/components/about/about.component';
 
 const routes: Routes = [
     { path: 'canvas', component: CanvasThreeDimensionsComponent },
     { path: 'parallel', component: ParallelWorkersComponent },
-    { path: 'grid', component: GridComponent }, // No longer a way to get here
     { path: 'about', component: AboutComponent },
     {
         path: 'experience',
