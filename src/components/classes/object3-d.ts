@@ -5,12 +5,18 @@ import { Vector } from './vector';
 export class Object3D {
     vertices: Vector[];
     faces: number[][];
+    rotation: Rotation;
     rotationMatrix: Matrix;
 
     constructor(vertices: Vector[], faces: number[][], rotation = { x: 0, y: 0, z: 0 } as Rotation) {
         this.vertices = vertices;
         this.faces = faces;
+        this.rotation = rotation;
         this.rotationMatrix = Object3D.createRotationMatrix(rotation);
+    }
+
+    static createCopy(object3d: Object3D): Object3D {
+        return new Object3D(object3d.vertices, object3d.faces, object3d.rotation);
     }
 
     static createRotationMatrix(rotation: Rotation): Matrix {
@@ -33,7 +39,7 @@ export class Object3D {
     }
 
     newObjectWithRotation(rotationMatrix: Matrix): Object3D {
-        const newObject = structuredClone(this) as Object3D;
+        const newObject = Object3D.createCopy(this) as Object3D;
         newObject.vertices = newObject.vertices.map((vertex) => {
             const rotatedVertex = vertex.toMatrix().multiply(rotationMatrix);
             return Vector.fromArray(rotatedVertex.matrix[0]);
