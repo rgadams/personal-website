@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpersonal_website=self.webpackChunkpersonal_website||[]).push([[880],{9880:(r,v,t)=>{t.a(r,async(Q,l)=>{try{t.r(v),t.d(v,{Cell:()=>h.fh,Universe:()=>h._D,__wbindgen_throw:()=>h.Qn});var h=t(2276),n=Q([h]);h=(n.then?(await n)():n)[0],l()}catch(u){l(u)}})}}]);
