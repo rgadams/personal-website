@@ -45,7 +45,12 @@ export class WebGlService {
         return shader;
     }
 
-    initBuffers(gl, positions, colors, indices, vertexNormals) {
+    initBuffers(gl, positions, colors, indices, vertexNormals): {
+        position: WebGLBuffer,
+        normal: WebGLBuffer,
+        color: WebGLBuffer,
+        indices: WebGLBuffer
+    } {
         const colorBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);

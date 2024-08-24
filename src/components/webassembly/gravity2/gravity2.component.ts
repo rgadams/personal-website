@@ -9,7 +9,7 @@ import { mat4 } from 'gl-matrix';
 @Component({
     selector: 'app-gravity',
     templateUrl: './gravity2.component.html',
-    styleUrls: ['./gravity2.component.less'],
+    styleUrls: ['./gravity2.component.less']
 })
 export class Gravity2Component implements OnInit {
     startX = 0;
@@ -27,8 +27,6 @@ export class Gravity2Component implements OnInit {
     buffers: WebGLBuffer;
     gl: WebGLRenderingContext;
     cubeRotation = 0.0;
-
-    /* eslint-disable */
     cubeVertexPositions = [
         // Front face
         -0.1, -0.1,  0.1,
@@ -111,7 +109,6 @@ export class Gravity2Component implements OnInit {
         -1.0,  0.0,  0.0,
         -1.0,  0.0,  0.0
     ];
-    /* eslint-enable */
 
     constructor(private webGlService: WebGlService) {}
 
@@ -194,7 +191,7 @@ export class Gravity2Component implements OnInit {
                 this.cubeRotation = this.startRotation + ($event.clientX - this.startX) / (this.canvas.width / 10);
             }
         });
-        document.addEventListener('mouseup', () => {
+        document.addEventListener('mouseup', ($event) => {
             this.mousedown = false;
             this.startRotation = this.cubeRotation;
         });
@@ -217,15 +214,15 @@ export class Gravity2Component implements OnInit {
         particlePositions.forEach((particle, particleIndex) => {
             this.cubeVertexPositions.forEach((element, index) => {
                 switch (index % 3) {
-                    case 0:
-                        particles.push(particle[0] + (element * masses[particleIndex]) / 0.5);
-                        break;
-                    case 1:
-                        particles.push(particle[1] + (element * masses[particleIndex]) / 0.5);
-                        break;
-                    case 2:
-                        particles.push(particle[2] + (element * masses[particleIndex]) / 0.5);
-                        break;
+                case 0:
+                    particles.push(particle[0] + (element * masses[particleIndex]) / 0.5);
+                    break;
+                case 1:
+                    particles.push(particle[1] + (element * masses[particleIndex]) / 0.5);
+                    break;
+                case 2:
+                    particles.push(particle[2] + (element * masses[particleIndex]) / 0.5);
+                    break;
                 }
             });
         });
@@ -240,22 +237,20 @@ export class Gravity2Component implements OnInit {
         }
         let colors = [];
 
-        this.faceColors.forEach((c) => {
+        for (let j = 0; j < this.faceColors.length; ++j) {
+            const c = this.faceColors[j];
+
             // Repeat each color four times for the four vertices of the face
             colors = colors.concat(c, c, c, c);
-        });
+        }
         return colors;
     }
 
     // Draw the scene repeatedly
-    render(now) {
+    render(now: number) {
         this.universe.tick();
 
-        const rawPositions = new Float64Array(
-            memory.buffer,
-            this.universe.get_positions_ptr(),
-            this.numberOfParticles * 3
-        );
+        const rawPositions = new Float64Array(memory.buffer, this.universe.get_positions_ptr(), this.numberOfParticles * 3);
         const masses = new Float64Array(memory.buffer, this.universe.get_masses_ptr(), this.numberOfParticles);
         const positions = [];
         for (let i = 0; i < this.numberOfParticles; i++) {
@@ -264,15 +259,9 @@ export class Gravity2Component implements OnInit {
 
         const particles = this.getParticleVertices(positions, masses);
 
-        this.buffers = this.webGlService.initBuffers(
-            this.gl,
-            particles,
-            this.colors,
-            this.baseIndices,
-            this.cubeNormals
-        );
+        this.buffers = this.webGlService.initBuffers(this.gl, particles, this.colors, this.baseIndices, this.cubeNormals);
 
-        now *= 0.001; // convert to seconds
+        now *= 0.001;  // convert to seconds
         this.then = now;
 
         this.drawScene(this.gl, this.programInfo, this.buffers);
@@ -280,7 +269,7 @@ export class Gravity2Component implements OnInit {
         requestAnimationFrame(this.render.bind(this));
     }
 
-    drawScene(gl: WebGLRenderingContext, programContext: WebGLProgram, buffers: WebGLBuffer) {
+    drawScene(gl: WebGLRenderingContext, programInfo: any, buffers: any) {
         gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
         gl.clearDepth(1.0); // Clear everything
         gl.enable(gl.DEPTH_TEST); // Enable depth testing
@@ -343,16 +332,16 @@ export class Gravity2Component implements OnInit {
             const normalize = false;
             const stride = 0;
             const offset = 0;
-            gl.bindBuffer(gl.ARRAY_BUFFER, buffers);
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position);
             gl.vertexAttribPointer(
-                gl.getAttribLocation(programContext, 'vertexPosition'),
+                programInfo.attribLocations.vertexPosition,
                 numComponents,
                 type,
                 normalize,
                 stride,
-                offset
-            );
-            gl.enableVertexAttribArray(gl.getAttribLocation(programContext, 'vertexPosition'));
+                offset);
+            gl.enableVertexAttribArray(
+                programInfo.attribLocations.vertexPosition);
         }
 
         // Tell WebGL how to pull out the colors from the color buffer
@@ -363,20 +352,20 @@ export class Gravity2Component implements OnInit {
             const normalize = false;
             const stride = 0;
             const offset = 0;
-            gl.bindBuffer(gl.ARRAY_BUFFER, buffers);
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color);
             gl.vertexAttribPointer(
-                gl.getAttribLocation(programContext, 'vertexColor'),
+                programInfo.attribLocations.vertexColor,
                 numComponents,
                 type,
                 normalize,
                 stride,
-                offset
-            );
-            gl.enableVertexAttribArray(gl.getAttribLocation(programContext, 'vertexColor'));
+                offset);
+            gl.enableVertexAttribArray(
+                programInfo.attribLocations.vertexColor);
         }
 
         // Tell WebGL which indices to use to index the vertices
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);
 
         // Tell WebGL how to pull out the normals from
         // the normal buffer into the vertexNormal attribute.
@@ -386,25 +375,34 @@ export class Gravity2Component implements OnInit {
             const normalize = false;
             const stride = 0;
             const offset = 0;
-            gl.bindBuffer(gl.ARRAY_BUFFER, buffers);
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffers.normal);
             gl.vertexAttribPointer(
-                gl.getAttribLocation(programContext, 'vertexNormal'),
+                programInfo.attribLocations.vertexNormal,
                 numComponents,
                 type,
                 normalize,
                 stride,
-                offset
-            );
-            gl.enableVertexAttribArray(gl.getAttribLocation(programContext, 'vertexNormal'));
+                offset);
+            gl.enableVertexAttribArray(
+                programInfo.attribLocations.vertexNormal);
         }
 
         // Tell WebGL to use our program when drawing
-        gl.useProgram(programContext);
+        gl.useProgram(programInfo.program);
 
         // Set the shader uniforms
-        gl.uniformMatrix4fv(gl.getUniformLocation(programContext, 'projectionMatrix'), false, projectionMatrix);
-        gl.uniformMatrix4fv(gl.getUniformLocation(programContext, 'modelViewMatrix'), false, modelViewMatrix);
-        gl.uniformMatrix4fv(gl.getUniformLocation(programContext, 'normalMatrix'), false, normalMatrix);
+        gl.uniformMatrix4fv(
+            programInfo.uniformLocations.projectionMatrix,
+            false,
+            projectionMatrix);
+        gl.uniformMatrix4fv(
+            programInfo.uniformLocations.modelViewMatrix,
+            false,
+            modelViewMatrix);
+        gl.uniformMatrix4fv(
+            programInfo.uniformLocations.normalMatrix,
+            false,
+            normalMatrix);
 
         {
             const vertexCount = 36 * this.numberOfParticles;
