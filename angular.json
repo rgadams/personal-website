@@ -46,6 +46,7 @@
                                     "with": "src/environments/environment.prod.ts"
                                 }
                             ],
+                            "buildTarget": "personal-website:build:production",
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
@@ -71,18 +72,18 @@
                 "serve": {
                     "builder": "@angular-builders/custom-webpack:dev-server",
                     "options": {
-                        "browserTarget": "personal-website:build"
+                        "buildTarget": "personal-website:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "personal-website:build:production"
+                            "buildTarget": "personal-website:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "personal-website:build"
+                        "buildTarget": "personal-website:build:production"
                     }
                 },
                 "test": {
