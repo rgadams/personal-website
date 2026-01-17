@@ -1,0 +1,21 @@
+{
+  "name": "gravity-wasm",
+  "collaborators": [
+    "Roy Adams"
+  ],
+  "description": "A gravity simulation tool",
+  "version": "0.1.1",
+  "license": "MIT/Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rgadams/gravity-wasm"
+  },
+  "files": [
+    "gravity_wasm_bg.wasm",
+    "gravity_wasm.js",
+    "gravity_wasm.d.ts"
+  ],
+  "module": "gravity_wasm.js",
+  "types": "gravity_wasm.d.ts",
+  "sideEffects": false
+}
