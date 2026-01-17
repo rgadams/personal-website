@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit, signal, WritableSignal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Universe } from 'src/assets/game-of-life';
 
 @Component({
     selector: 'app-game-of-life',
+    imports: [FormsModule],
     templateUrl: './game-of-life.component.html',
     styleUrls: ['./game-of-life.component.less'],
 })
@@ -13,16 +15,18 @@ export class GameOfLifeComponent implements OnInit {
     width: number;
     height: number;
 
-    gridElements: {
+    gridElements: WritableSignal<{
         id: string;
         row: number;
         column: number;
         className: string;
-    }[] = [];
+    }[]> = signal([]);
 
     playStatus = false;
     statusDisplay = 'Stopped';
     patternToGenerate: string;
+
+    constructor(private ngZone: NgZone) {}
 
     getIndex(row, column) {
         return row * this.width + column;
@@ -35,6 +39,7 @@ export class GameOfLifeComponent implements OnInit {
     async loadUniverseModule() {
         return await import('src/assets/game-of-life/wasm_game_of_life');
     }
+
 
     ngOnInit() {
         const promises = [];
@@ -51,10 +56,11 @@ export class GameOfLifeComponent implements OnInit {
 
             const cellsPtr = this.universe.cells();
             const cells = new Uint8Array(this.memory.buffer, cellsPtr, this.width * this.height);
+            const gridElementsArray = [];
 
             for (let row = 0; row < this.height; row++) {
                 for (let col = 0; col < this.width; col++) {
-                    this.gridElements.push({
+                    gridElementsArray.push({
                         id: `row-${row}-column-${col}`,
                         row,
                         column: col,
@@ -62,6 +68,7 @@ export class GameOfLifeComponent implements OnInit {
                     });
                 }
             }
+            this.gridElements.set(gridElementsArray);
         });
     }
 
@@ -85,7 +92,7 @@ export class GameOfLifeComponent implements OnInit {
         for (let row = 0; row < this.height; row++) {
             for (let col = 0; col < this.width; col++) {
                 const idx = this.getIndex(row, col);
-                this.gridElements[idx].className = cells[idx] === 0 ? 'dead' : 'alive';
+                this.gridElements()[idx].className = cells[idx] === 0 ? 'dead' : 'alive';
             }
         }
     }

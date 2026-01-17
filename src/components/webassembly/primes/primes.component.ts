@@ -1,7 +1,10 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-primes',
+    imports: [FormsModule, DecimalPipe],
     templateUrl: './primes.component.html',
     styleUrls: ['./primes.component.less'],
 })

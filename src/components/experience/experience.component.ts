@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Experience } from './experience.model';
+import { ExperienceItemComponent } from './experience-item/experience-item.component';
+import { ReversePipe } from 'src/pipes/reverse.pipe';
 
 @Component({
     selector: 'app-experience',
     templateUrl: './experience.component.html',
     styleUrls: ['./experience.component.less'],
+    imports: [ExperienceItemComponent, ReversePipe],
 })
 export class ExperienceComponent {
     experiences: Experience[] = [

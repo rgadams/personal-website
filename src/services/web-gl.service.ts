@@ -46,10 +46,10 @@ export class WebGlService {
     }
 
     initBuffers(gl, positions, colors, indices, vertexNormals): {
-        position: WebGLBuffer,
-        normal: WebGLBuffer,
-        color: WebGLBuffer,
-        indices: WebGLBuffer
+        position: WebGLBuffer;
+        normal: WebGLBuffer;
+        color: WebGLBuffer;
+        indices: WebGLBuffer;
     } {
         const colorBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);

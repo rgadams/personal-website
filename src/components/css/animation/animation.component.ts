@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet, RouterLink } from '@angular/router';
+import { NgbNav, NgbNavItem, NgbNavLink } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-css-animations',
     templateUrl: './animation.component.html',
     styleUrls: ['./animation.component.less'],
+    imports: [NgbNav, NgbNavItem, NgbNavLink, RouterLink, RouterOutlet]
 })
 export class AnimationComponent implements OnInit, OnDestroy {
     currentPath: string;

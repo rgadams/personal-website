@@ -14,12 +14,11 @@ const routes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forChild(routes)
-    ],
-    declarations: [
+        RouterModule.forChild(routes),
         HomeComponent,
         ProjectPanelComponent
-    ]
+    ],
+    declarations: []
 })
 export class HomeModule {
 }

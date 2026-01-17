@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ParallelWorkers } from 'src/components/classes/parallel/parallel-workers';
 import { Matrix } from '../classes/matrix';
 import { finalize } from 'rxjs/operators';
+import { DecimalPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-parallel-workers',
+    imports: [DecimalPipe, FormsModule],
     templateUrl: './parallel-workers.component.html',
     styleUrls: ['./parallel-workers.component.less'],
 })
