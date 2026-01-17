@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Universe } from 'src/assets/game-of-life';
 
 @Component({
     selector: 'app-game-of-life',
+    imports: [FormsModule],
     templateUrl: './game-of-life.component.html',
     styleUrls: ['./game-of-life.component.less'],
 })

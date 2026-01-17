@@ -10,18 +10,18 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent },
     {
         path: 'experience',
-        loadChildren: () => import('src/components/experience/experience.module').then(m => m.ExperienceModule)
+        loadComponent: () => import('src/components/experience/experience.component').then(m => m.ExperienceComponent)
     },
     {
         path: 'animation',
-        loadChildren: () => import('src/components/css/animation/animation.module').then(m => m.AnimationModule)
+        loadChildren: () => import('src/components/css/animation/animation.component').then(m => m.AnimationComponent)
     },
     {
         path: 'webassembly',
-        loadChildren: () => import('src/components/webassembly/webassembly.module').then(m => m.WebassemblyModule)
+        loadChildren: () => import('src/components/webassembly/webassembly.component').then(m => m.WebassemblyComponent)
     },
-    { path: '', loadChildren: () => import('src/components/home/home.module').then(m => m.HomeModule) },
-    { path: '**', loadChildren: () => import('src/components/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
+    { path: '', loadComponent: () => import('src/components/home/home.component').then(m => m.HomeComponent) },
+    { path: '**', loadChildren: () => import('src/components/page-not-found/page-not-found.component').then(m => m.PageNotFoundComponent) },
 ];
 
 @NgModule({

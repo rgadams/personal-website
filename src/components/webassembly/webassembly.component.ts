@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-webassembly',
+    imports: [NgbModule, RouterLink, RouterOutlet],
     templateUrl: './webassembly.component.html',
     styleUrls: ['./webassembly.component.less'],
 })

@@ -108,7 +108,6 @@
             }
         }
     },
-    "defaultProject": "personal-website",
     "cli": {
       "analytics": false
     }

@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-menu',
+    imports: [RouterLink, NgbModule],
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.less'],
 })

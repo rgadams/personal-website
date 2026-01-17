@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-square-game',
     templateUrl: './square-game.component.html',
     styleUrls: ['./square-game.component.less'],
+    imports: [CommonModule],
 })
 export class SquareGameComponent implements OnInit {
     grid: number[] = [];

@@ -214,15 +214,15 @@ export class Gravity2Component implements OnInit {
         particlePositions.forEach((particle, particleIndex) => {
             this.cubeVertexPositions.forEach((element, index) => {
                 switch (index % 3) {
-                case 0:
-                    particles.push(particle[0] + (element * masses[particleIndex]) / 0.5);
-                    break;
-                case 1:
-                    particles.push(particle[1] + (element * masses[particleIndex]) / 0.5);
-                    break;
-                case 2:
-                    particles.push(particle[2] + (element * masses[particleIndex]) / 0.5);
-                    break;
+                    case 0:
+                        particles.push(particle[0] + (element * masses[particleIndex]) / 0.5);
+                        break;
+                    case 1:
+                        particles.push(particle[1] + (element * masses[particleIndex]) / 0.5);
+                        break;
+                    case 2:
+                        particles.push(particle[2] + (element * masses[particleIndex]) / 0.5);
+                        break;
                 }
             });
         });
@@ -237,6 +237,7 @@ export class Gravity2Component implements OnInit {
         }
         let colors = [];
 
+        // eslint-disable-next-line @typescript-eslint/prefer-for-of
         for (let j = 0; j < this.faceColors.length; ++j) {
             const c = this.faceColors[j];
 
@@ -394,15 +395,15 @@ export class Gravity2Component implements OnInit {
         gl.uniformMatrix4fv(
             programInfo.uniformLocations.projectionMatrix,
             false,
-            projectionMatrix);
+            projectionMatrix as Float32Array);
         gl.uniformMatrix4fv(
             programInfo.uniformLocations.modelViewMatrix,
             false,
-            modelViewMatrix);
+            modelViewMatrix as Float32Array);
         gl.uniformMatrix4fv(
             programInfo.uniformLocations.normalMatrix,
             false,
-            normalMatrix);
+            normalMatrix as Float32Array);
 
         {
             const vertexCount = 36 * this.numberOfParticles;
