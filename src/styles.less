@@ -11,156 +11,161 @@
  */
 
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
 // ======================= 1. Variable Declarations ======================
 :root {
-    // ======================= 1.1. Colors ======================
-    --primary-white: #ffffff;
-    --primary-grey-3: #e0e0e0;
-    --primary-black: #000000;
-    --accent-purple: #8B06C4;
-    --accent-purple-dark: #500371;
-    --accent-purple-light: #A64ACE;
-    --accent-blue: #420FC8;
-    --accent-blue-dark: #250775;
-    --accent-blue-light: #7754D1;
-    --complementary-neon: #F4FE00;
-    --accent-pink: #E00072;
-    --accent-pink-dark: #B3005B;
-    --accent-pink-light: #E54B99;
+  // ======================= 1.1. Colors ======================
+  --primary-white: #ffffff;
+  --primary-grey-light-1: #eeeeee;
+  --primary-grey-light-2: #888888;
+  --primary-grey-dark-1: #2b2b2b;
+  --primary-grey-dark-2: #202020;
+  --primary-black: #000000;
 
-    // ======================= 1.2. Z-Index ======================
-    --z-menu: 100;
-    --z-nav-tabs: 90;
+  // ======================= 1.2. Z-Index ======================
+  --z-menu: 100;
+  --z-nav-tabs: 90;
 
-    // ======================= 1.2. Fonts ======================
-    --font-body: 'Exo 2', sans-serif;
-    --font-header: 'Roboto Slab', serif;
+  // ======================= 1.2. Fonts ======================
+  --font-body: 'Exo 2', sans-serif;
+  --font-header: 'Roboto Slab', serif;
 }
 
 // ======================= 2. HTML and Body ======================
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
-  background-color: var(--primary-grey-3);
+  background-color: var(--primary-grey-dark-1);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: var(--font-body) }
-h1, h2, h3, h4 { font-family: var(--font-header) }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--font-body);
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-header);
+}
 
 // ======================= 3. Buttons ======================
 .btn {
-    border: none;
-    border-radius: 0;
-    position: relative;
-    color: var(--primary-white);
-    font-family: var(--font-header);
+  border: none;
+  border-radius: 0;
+  position: relative;
+  color: var(--primary-white);
+  font-family: var(--font-header);
 }
 
 .btn::before {
-    content: '';
-    position: absolute;
-    inset: 0.2em;
-    transform: scaleX(0);
-    border-bottom: 2px solid var(--primary-white);
-    transition: transform 250ms ease-in-out;
+  content: '';
+  position: absolute;
+  inset: 0.2em;
+  transform: scaleX(0);
+  border-bottom: 2px solid var(--primary-white);
+  transition: transform 250ms ease-in-out;
 }
 
 .btn:focus {
-    outline: none;
-    -webkit-appearance: none;
-    box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+  box-shadow: none;
 }
 
 .btn:hover::before,
 .btn:focus::before {
-    transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .btn-primary {
-    background-color: var(--accent-purple);
+  background-color: var(--accent-purple);
 }
 
 .btn-primary:hover {
-    background-color: var(--accent-purple-dark);
+  background-color: var(--accent-purple-dark);
 }
 
 .btn-primary:focus {
-    border-color: var(--primary-white);
-    background-color: var(--accent-purple-dark);
+  border-color: var(--primary-white);
+  background-color: var(--accent-purple-dark);
 }
 
 .btn-primary:active {
-    background-color: var(--accent-purple-dark) !important;
+  background-color: var(--accent-purple-dark) !important;
 }
 
 .btn-danger {
-    background-color: var(--accent-pink);
+  background-color: var(--accent-pink);
 }
 
 .btn-danger:hover {
-    background-color: var(--accent-pink-dark);
+  background-color: var(--accent-pink-dark);
 }
 
 .btn-danger:focus {
-    border-color: var(--primary-white);
-    background-color: var(--accent-pink-dark);
+  border-color: var(--primary-white);
+  background-color: var(--accent-pink-dark);
 }
 
 .btn-danger:active {
-    background-color: var(--accent-pink-dark) !important;
+  background-color: var(--accent-pink-dark) !important;
 }
 
 a {
-    color: var(--accent-blue);
-    text-decoration: underline;
+  color: var(--accent-blue);
+  text-decoration: underline;
 }
 
 .accent-purple {
-    color: var(--accent-purple);
-    font-style: italic;
+  color: var(--accent-purple);
+  font-style: italic;
 }
 
 // ======================= 4. Tables ======================
 table.app-table {
-    thead tr {
-        background-color: var(--accent-purple-dark);
-        color: var(--primary-white);
-        border: 2px solid var(--accent-purple-dark);
-    }
+  thead tr {
+    background-color: var(--accent-purple-dark);
+    color: var(--primary-white);
+    border: 2px solid var(--accent-purple-dark);
+  }
 
-    th {
-        font-family: var(--font-header);
-        border: none;
-    }
+  th {
+    font-family: var(--font-header);
+    border: none;
+  }
 
-    tbody tr:nth-child(odd) {
-        background-color: var(--primary-white);
-    }
+  tbody tr:nth-child(odd) {
+    background-color: var(--primary-white);
+  }
 
-    tbody tr:nth-child(even) {
-        background-color: var(--primary-grey-3);
-    }
+  tbody tr:nth-child(even) {
+    background-color: var(--primary-grey-3);
+  }
 
-    tbody tr {
-        box-sizing: content-box;
-        border: 2px solid var(--accent-purple-dark);
-        color: var(--primary-black);
-        border-bottom: none;
-    }
+  tbody tr {
+    box-sizing: content-box;
+    border: 2px solid var(--accent-purple-dark);
+    color: var(--primary-black);
+    border-bottom: none;
+  }
 
-    tbody tr:last-child {
-        border-bottom: 2px solid var(--accent-purple-dark);
-    }
+  tbody tr:last-child {
+    border-bottom: 2px solid var(--accent-purple-dark);
+  }
 }
 
 // ======================= 5. Inputs ======================
 input.app-input {
-    border-radius: 0;
-    border: 2px solid var(--primary-black);
-    color: var(--primary-black);
-    margin-bottom: 0.5em;
+  border-radius: 0;
+  border: 2px solid var(--primary-black);
+  color: var(--primary-black);
+  margin-bottom: 0.5em;
 }

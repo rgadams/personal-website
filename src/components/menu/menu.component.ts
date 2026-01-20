@@ -10,9 +10,12 @@ import { NgbDropdown, NgbDropdownItem, NgbDropdownMenu, NgbDropdownToggle } from
 })
 export class MenuComponent {
     menuItems = [
+        { link: '', name: 'Home' },
+        { link: '', name: 'About' },
         { link: '/canvas', name: '3D Graphics' },
         { link: '/parallel', name: 'Web Workers' },
         { link: '/webassembly', name: 'WebAssembly' },
         { link: '/animation', name: 'CSS Animations' },
     ];
+
 }

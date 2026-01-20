@@ -48,5 +48,5 @@ testem.log
 Thumbs.db
 
 # Misc.
-/src/assets/images/me.jpg
+/src/assets/*
 CNAME
