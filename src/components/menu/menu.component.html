@@ -19,7 +19,7 @@
       </button>
       <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="projectsMenuButton">
         @for (item of menuItems; track item) {
-          <a ngbDropdownItem class="dropdown-item" [routerLink]="item.link">
+          <a ngbDropdownItem class="dropdown-item" [routerLink]="item.link" [fragment]="item.fragment">
             {{ item.name }}
           </a>
         }

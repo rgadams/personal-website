@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 interface SwirlItem {
     layer: number;
@@ -18,12 +18,18 @@ interface SwirlItem {
 export class HomeComponent implements OnInit {
     textSwirlItems: SwirlItem[];
 
+    constructor(private route: ActivatedRoute) {}
+
     ngOnInit(): void {
         this.textSwirlItems = [];
         const textSwirl = document.getElementById('text-swirl');
         let currentLayer = 0;
         let currentItemsInLayer = 0;
         let currentLayerRotationTime = this.getRandomRotationTime();
+        // https://stackoverflow.com/questions/7070054/javascript-shuffle-html-list-element-order
+        for (var i = textSwirl.children.length; i >= 0; i--) {
+            textSwirl.appendChild(textSwirl.children[Math.random() * i | 0]);
+        }
         for (let item of textSwirl.children) {
             const desiredNumberOfItems = 10 + 4 * currentLayer;
             this.textSwirlItems.push({
@@ -39,6 +45,12 @@ export class HomeComponent implements OnInit {
                 currentItemsInLayer = 0;
             }
         }
+
+        this.route.fragment.subscribe((fragment: string) => {
+            if (fragment) {
+                document.getElementById(fragment).scrollIntoView();
+            }
+        });
 
         requestAnimationFrame((t) => this.runSwirl(t));
     }
