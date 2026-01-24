@@ -233,6 +233,7 @@ module.exports = [
             "@angular-eslint/no-outputs-metadata-property": "error",
             "@angular-eslint/use-lifecycle-interface": "error",
             "@angular-eslint/use-pipe-transform-interface": "error",
+            "@angular-eslint/template/prefer-control-flow": "error",
             "arrow-body-style": "error",
             "arrow-parens": [
                 "off",

@@ -9,6 +9,12 @@
 
 .home {
   height: 100%;
+
+  section:nth-child(even) {
+    background-color: var(--primary-grey-dark-1);
+    box-shadow: 0 3px 5px var(--primary-grey-dark-2);
+    border-top: 4px solid var(--primary-grey-dark-2);
+  }
 }
 
 .home-section {
@@ -21,7 +27,7 @@
 
   .title {
     text-align: center;
-    background-color: rgba(from var(--primary-grey-dark-1) r g b / 0.75);
+    background-color: rgba(from var(--primary-grey-neutral) r g b / 0.75);
     z-index: 1;
   }
 }
@@ -50,25 +56,18 @@
 }
 
 .about-section,
-.experience-section {
+.experience-section,
+.projects-section {
   color: var(--primary-white);
-  padding: 1em;
+  padding: 1em 2em;
 
   h2 {
     text-decoration: underline;
+    text-align: center;
   }
-}
-
-.about-section {
-  text-align: center;
 }
 
 .experience-section {
-  h2,
-  h3 {
-    text-align: center;
-  }
-
   h4 {
     font-style: italic;
   }

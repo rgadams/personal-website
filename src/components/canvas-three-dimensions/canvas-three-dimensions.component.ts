@@ -5,11 +5,13 @@ import { Face } from 'src/components/classes/interfaces';
 import { Camera } from '../classes/camera';
 import { Matrix } from '../classes/matrix';
 import { Vector } from '../classes/vector';
+import { OpenInGithub } from "../open-in-github/open-in-github";
 
 @Component({
     selector: 'app-canvas-three-dimensions',
     templateUrl: './canvas-three-dimensions.component.html',
     styleUrls: ['./canvas-three-dimensions.component.less'],
+    imports: [OpenInGithub],
 })
 export class CanvasThreeDimensionsComponent implements OnInit {
     c: HTMLCanvasElement;

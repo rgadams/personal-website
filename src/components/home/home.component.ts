@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ProjectsComponent } from "../projects/projects";
 
 interface SwirlItem {
     layer: number;
@@ -11,7 +12,7 @@ interface SwirlItem {
 
 @Component({
     selector: 'app-home',
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule, RouterModule, ProjectsComponent],
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.less'],
 })

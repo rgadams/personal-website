@@ -14,6 +14,12 @@
                 "tabWidth": 2,
                 "bracketSameLine": true
             }
+        },
+        {
+            "files": "*.html",
+            "options": {
+                "parser": "angular"
+            }
         }
     ]
 }

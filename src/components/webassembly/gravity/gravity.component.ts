@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Universe } from 'src/assets/wasm-gravity';
 import { memory } from 'src/assets/wasm-gravity/gravity_wasm_bg.wasm';
+import { OpenInGithub } from "src/components/open-in-github/open-in-github";
 
 @Component({
     selector: 'app-gravity',
     templateUrl: './gravity.component.html',
     styleUrls: ['./gravity.component.less'],
+    imports: [OpenInGithub],
 })
 export class GravityComponent implements OnInit {
     universe: Universe;

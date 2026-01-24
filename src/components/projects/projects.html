@@ -1,0 +1,24 @@
+@if (showHeader) {
+  <h1>Projects</h1>
+}
+
+<div class="project-panels">
+  @for (project of projectList; track project) {
+    <ng-container [ngTemplateOutlet]="projectPanel" [ngTemplateOutletContext]="{ project }"></ng-container>
+  }
+</div>
+
+<ng-template #projectPanel let-project="project">
+  <div class="panel">
+    <h4 class="project-title">{{ project.title }}</h4>
+    @if (project.link) {
+      <app-open-in-github [githubLink]="project.link" [label]="project.linkText"></app-open-in-github>
+    }
+    <section class="description">
+      <p>{{ project.description }}</p>
+    </section>
+    @if (project.route) {
+      <a class="project-route" [routerLink]="project.route">Go To Project</a>
+    }
+  </div>
+</ng-template>

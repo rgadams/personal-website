@@ -13,10 +13,7 @@ export class MenuComponent {
         { link: '', name: 'Home' },
         { link: '', name: 'About', fragment: 'about' },
         { link: '', name: 'Experience', fragment: 'experience' },
-        { link: '/canvas', name: '3D Graphics' },
-        { link: '/parallel', name: 'Web Workers' },
-        { link: '/webassembly', name: 'WebAssembly' },
-        { link: '/animation', name: 'CSS Animations' },
+        { link: 'projects', name: 'Projects'},
     ];
 
 }
