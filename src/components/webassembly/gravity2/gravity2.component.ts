@@ -5,11 +5,13 @@ import { WebGlService } from 'src/services/web-gl.service';
 import fragmentShaderSrc from 'src/assets/shaders/fragment-shader.glsl';
 import vertexShaderSrc from 'src/assets/shaders/vertex-shader.glsl';
 import { mat4 } from 'gl-matrix';
+import { OpenInGithub } from "src/components/open-in-github/open-in-github";
 
 @Component({
     selector: 'app-gravity',
     templateUrl: './gravity2.component.html',
-    styleUrls: ['./gravity2.component.less']
+    styleUrls: ['./gravity2.component.less'],
+    imports: [OpenInGithub]
 })
 export class Gravity2Component implements OnInit {
     startX = 0;

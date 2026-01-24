@@ -1,10 +1,11 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { OpenInGithub } from "src/components/open-in-github/open-in-github";
 
 @Component({
     selector: 'app-primes',
-    imports: [FormsModule, DecimalPipe],
+    imports: [FormsModule, DecimalPipe, OpenInGithub],
     templateUrl: './primes.component.html',
     styleUrls: ['./primes.component.less'],
 })

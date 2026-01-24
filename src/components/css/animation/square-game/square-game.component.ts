@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SquareGameComponent implements OnInit {
     grid: number[] = [];
-    dances: number[] = [];
+    dances: number[] = [1, 2, 1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 2, 1];
     error: string;
     gameOver = false;
 
@@ -17,13 +17,6 @@ export class SquareGameComponent implements OnInit {
         // Create array of numbers 1-16, then shuffle the order
         for (let i = 1; i < 17; i++) {
             this.grid.push(i);
-            if (Math.floor((i - 1) / 4) % 2 === 0 && (i % 2 === 0) || i % 2 !== 0) {
-                if (i % 2 === 0) {
-                    this.dances.push(1);
-                } else {
-                    this.dances.push(2);
-                }
-            }
         }
         this.shuffleArray(this.grid);
         const openIndex = this.grid.findIndex((value) => value === 16);

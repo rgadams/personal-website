@@ -1,26 +1,29 @@
 <header class="menu">
-  <a routerLink="" class="logo btn btn-primary">
-    <span class="logo-r">R</span>
-    <span class="logo-a">A</span>
-  </a>
-  <a class="btn btn-primary" routerLink="">Home</a>
-  <a class="btn btn-primary" routerLink="experience">Experience</a>
-  <div ngbDropdown class="dropdown">
-    <button
-      ngbDropdownToggle
-      class="btn btn-primary"
-      type="button"
-      id="projectsMenuButton"
-      aria-haspopup="true"
-      aria-expanded="false">
-      Projects
-    </button>
-    <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="projectsMenuButton">
-      @for (item of menuItems; track item) {
-        <a ngbDropdownItem class="dropdown-item" [routerLink]="item.link">
-          {{ item.name }}
-        </a>
-      }
+  <a routerLink="" class="btn btn-primary">Roy Adams</a>
+  <div>
+    <a class="menu-link" href="https://github.com/rgadams" target="_blank">
+      <img class="logo" src="assets/images/GitHub_Invertocat_White.png" />
+    </a>
+    <a class="menu-link" href="https://www.linkedin.com/in/roy-adams-727b28a7/" target="_blank">
+      <img class="logo li" src="assets/images/InBug-White.png" />
+    </a>
+    <div ngbDropdown class="dropdown">
+      <button
+        ngbDropdownToggle
+        class="btn btn-primary"
+        type="button"
+        id="projectsMenuButton"
+        aria-haspopup="true"
+        aria-expanded="false">
+        <img src="assets/images/Menu.svg" />
+      </button>
+      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="projectsMenuButton">
+        @for (item of menuItems; track item) {
+          <a ngbDropdownItem class="dropdown-item" [routerLink]="item.link" [fragment]="item.fragment">
+            {{ item.name }}
+          </a>
+        }
+      </div>
     </div>
   </div>
 </header>

@@ -1,38 +1,79 @@
-.profile {
-  height: 25em;
+:host {
+  --top-portrait: 150px;
+  --center-portrait: calc(var(--top-portrait) + 295px - 295px/2);
+  display: block;
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.home {
+  height: 100%;
+
+  section:nth-child(even) {
+    background-color: var(--primary-grey-dark-1);
+    box-shadow: 0 3px 5px var(--primary-grey-dark-2);
+    border-top: 4px solid var(--primary-grey-dark-2);
+  }
+}
+
+.home-section {
   display: flex;
+  margin: 1em 2em 2em;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  padding: 2em;
+  color: var(--primary-white);
+  height: 100%;
 
-  h1 {
-    font-size: 4em;
+  .title {
+    text-align: center;
+    background-color: rgba(from var(--primary-grey-neutral) r g b / 0.75);
+    z-index: 1;
   }
+}
+
+.visual {
+  position: relative;
+  height: 80vh;
+}
+
+.portrait {
+  position: absolute;
+  left: calc(50% - 295px / 2);
+  top: var(--top-portrait);
+}
+
+#text-swirl {
+  position: relative;
+
+  > * {
+    --radius: 200px;
+    top: calc(var(--center-portrait));
+    left: 50%;
+
+    position: absolute;
+  }
+}
+
+.about-section,
+.experience-section,
+.projects-section {
+  color: var(--primary-white);
+  padding: 1em 2em;
 
   h2 {
-    font-size: 2.5em;
+    text-decoration: underline;
+    text-align: center;
   }
 }
 
-.panels {
-  background-color: var(--accent-purple-light);
-  padding: 2em;
-  border-top: 4px solid var(--accent-purple);
-
-  h3 {
-    margin-bottom: 1em;
-    color: var(--primary-white);
+.experience-section {
+  h4 {
+    font-style: italic;
   }
-}
 
-.project-panels {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 2em;
-
-  app-project-panel {
-    height: 100%;
-    box-shadow: 2px 4px 5px var(--primary-black);
+  .years {
+    font-size: 0.8em;
+    font-style: normal;
   }
 }

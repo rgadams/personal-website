@@ -1,10 +1,11 @@
 import { Component, NgZone, OnInit, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Universe } from 'src/assets/game-of-life';
+import { OpenInGithub } from "src/components/open-in-github/open-in-github";
 
 @Component({
     selector: 'app-game-of-life',
-    imports: [FormsModule],
+    imports: [FormsModule, OpenInGithub],
     templateUrl: './game-of-life.component.html',
     styleUrls: ['./game-of-life.component.less'],
 })
@@ -69,6 +70,7 @@ export class GameOfLifeComponent implements OnInit {
                 }
             }
             this.gridElements.set(gridElementsArray);
+            this.randomizeCells();
         });
     }
 
